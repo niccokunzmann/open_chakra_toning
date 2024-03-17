@@ -1,3 +1,19 @@
+# Open Chakra Toning
+# Copyright (C) 2024  Nicco Kunzmann
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 name: open_chakra_toning
 description: "Open your chakras with frequencies."
 # The following line prevents the package from being accidentally published to
@@ -67,6 +83,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
   - assets/i18n/
+  - assets/img/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
