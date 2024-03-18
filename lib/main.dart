@@ -17,6 +17,7 @@
 */
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -70,6 +71,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  ChakraPicture chakras = ChakraPictures().getChakraPicture();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,11 +85,10 @@ class _MyHomePageState extends State<MyHomePage> {
           alignment: Alignment.topCenter,
           fit: BoxFit.fill,
           child: GestureDetector(
+            onTap: () => {debugPrint("tap")},
             onTapDown: (details) {
-              ChakraPicture chakras = ChakraPictures().getChakraPicture();
               Chakra chakra = chakras.findClosestTo(Point(
                   x: details.localPosition.dx, y: details.localPosition.dy));
-              print(chakra.name);
             },
             child: ConstrainedBox(
               constraints: BoxConstraints(
