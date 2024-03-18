@@ -1,0 +1,16 @@
+# Build a flutter project for GitHub Actions
+# see https://github.com/bluefireteam/flutter-gh-pages
+name: gh-pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+      - uses: bluefireteam/flutter-gh-pages@v7
