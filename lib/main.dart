@@ -17,11 +17,11 @@
 */
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'chakras.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 void main() async {
   var delegate = await LocalizationDelegate.create(
@@ -72,6 +72,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   ChakraPicture chakras = ChakraPictures().getChakraPicture();
+  final player = AudioPlayer();
 
   @override
   Widget build(BuildContext context) {
@@ -89,14 +90,15 @@ class _MyHomePageState extends State<MyHomePage> {
             onTapDown: (details) {
               Chakra chakra = chakras.findClosestTo(Point(
                   x: details.localPosition.dx, y: details.localPosition.dy));
+              player.play(AssetSource(chakra.soundAssetPath));
             },
             child: ConstrainedBox(
               constraints: BoxConstraints(
                   minWidth: 1,
                   minHeight:
                       1), // from https://stackoverflow.com/a/60993103/1320237
-              child: SvgPicture.asset("assets/img/Chakras_map.svg",
-                  fit: BoxFit.cover),
+              child:
+                  SvgPicture.asset(chakras.imageAssetPath, fit: BoxFit.cover),
             ),
           ),
         ),

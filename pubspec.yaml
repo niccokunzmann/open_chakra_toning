@@ -50,6 +50,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_svg:
+  audioplayers:
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -85,6 +86,7 @@ flutter:
   assets:
   - assets/i18n/
   - assets/img/
+  - assets/sound/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -31,8 +31,9 @@ class Point {
 
 class Chakra {
   Point position;
+  String sound;
 
-  Chakra({required this.position});
+  Chakra({required this.position, required this.sound});
 
   String get name {
     return runtimeType.toString().toLowerCase();
@@ -41,34 +42,38 @@ class Chakra {
   double distanceTo(Point point) {
     return position.distanceTo(point);
   }
+
+  String get soundAssetPath {
+    return "sound/$sound";
+  }
 }
 
 class Root extends Chakra {
-  Root({required super.position});
+  Root({required super.position, required super.sound});
 }
 
 class Sacral extends Chakra {
-  Sacral({required super.position});
+  Sacral({required super.position, required super.sound});
 }
 
 class SolarPlexus extends Chakra {
-  SolarPlexus({required super.position});
+  SolarPlexus({required super.position, required super.sound});
 }
 
 class Heart extends Chakra {
-  Heart({required super.position});
+  Heart({required super.position, required super.sound});
 }
 
 class Throat extends Chakra {
-  Throat({required super.position});
+  Throat({required super.position, required super.sound});
 }
 
 class ThirdEye extends Chakra {
-  ThirdEye({required super.position});
+  ThirdEye({required super.position, required super.sound});
 }
 
 class Crown extends Chakra {
-  Crown({required super.position});
+  Crown({required super.position, required super.sound});
 }
 
 class ChakraPicture {
@@ -101,19 +106,24 @@ class ChakraPicture {
             ? chakra1
             : chakra2));
   }
+
+  String get imageAssetPath {
+    return "assets/img/$path";
+  }
 }
 
 class ChakraPictures {
   ChakraPicture getChakraPicture() {
     return ChakraPicture(
-      path: "assets/img/Chakras_map.svg",
-      crown: Crown(position: Point(x: 160, y: 44)),
-      thirdEye: ThirdEye(position: Point(x: 160, y: 80)),
-      throat: Throat(position: Point(x: 160, y: 145)),
-      heart: Heart(position: Point(x: 160, y: 195)),
-      solarPlexus: SolarPlexus(position: Point(x: 160, y: 245)),
-      sacral: Sacral(position: Point(x: 160, y: 294)),
-      root: Root(position: Point(x: 160, y: 342)),
+      path: "Chakras_map.svg",
+      crown: Crown(position: Point(x: 160, y: 44), sound: "chakra1.mp3"),
+      thirdEye: ThirdEye(position: Point(x: 160, y: 80), sound: "chakra2.mp3"),
+      throat: Throat(position: Point(x: 160, y: 145), sound: "chakra1.mp3"),
+      heart: Heart(position: Point(x: 160, y: 195), sound: "chakra2.mp3"),
+      solarPlexus:
+          SolarPlexus(position: Point(x: 160, y: 245), sound: "chakra1.mp3"),
+      sacral: Sacral(position: Point(x: 160, y: 294), sound: "chakra2.mp3"),
+      root: Root(position: Point(x: 160, y: 342), sound: "chakra1.mp3"),
     );
   }
 }
