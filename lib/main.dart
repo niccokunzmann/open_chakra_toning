@@ -74,6 +74,10 @@ class _MyHomePageState extends State<MyHomePage> {
   ChakraPicture chakras = ChakraPictures().getChakraPicture();
   final player = AudioPlayer();
 
+  _MyHomePageState() {
+    player.setReleaseMode(ReleaseMode.loop);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,7 +94,9 @@ class _MyHomePageState extends State<MyHomePage> {
             onTapDown: (details) {
               Chakra chakra = chakras.findClosestTo(Point(
                   x: details.localPosition.dx, y: details.localPosition.dy));
-              player.play(AssetSource(chakra.soundAssetPath));
+              player.play(
+                AssetSource(chakra.soundAssetPath),
+              );
             },
             child: ConstrainedBox(
               constraints: BoxConstraints(
