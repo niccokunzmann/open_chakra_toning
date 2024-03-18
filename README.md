@@ -1,16 +1,17 @@
-# open_chakra_toning
+# Open Chakra Toning
 
-A new Flutter project.
+Open your chakras by singing to their frequencies.
 
-## Getting Started
+You might want to
 
-This project is a starting point for a Flutter application.
+- **[Try it out!][web]
+- [Donate using GitHub Sponsors][gh-sponsors]
 
-A few resources to get you started if this is your first Flutter project:
+## Setup
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+This is a flutter project. You can follow their [setup guide](https://docs.flutter.dev/get-started/install)
+and build the project.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[web]: https://niccokunzmann.github.io/open_chakra_toning/
+[gh-sponsors]: https://github.com/sponsors/niccokunzmann
+
