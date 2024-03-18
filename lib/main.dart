@@ -19,6 +19,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'chakras.dart';
 
 void main() async {
   var delegate = await LocalizationDelegate.create(
@@ -68,14 +70,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,21 +78,29 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(translate("app.title")),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+        child: FittedBox(
+          alignment: Alignment.topCenter,
+          fit: BoxFit.fill,
+          child: GestureDetector(
+            onTapDown: (details) {
+              ChakraPicture chakras = ChakraPictures().getChakraPicture();
+              Chakra chakra = chakras.findClosestTo(Point(
+                  x: details.localPosition.dx, y: details.localPosition.dy));
+              print(chakra.name);
+            },
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                  minWidth: 1,
+                  minHeight:
+                      1), // from https://stackoverflow.com/a/60993103/1320237
+              child: SvgPicture.asset("assets/img/Chakras_map.svg",
+                  fit: BoxFit.cover),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {},
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
