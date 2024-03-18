@@ -4,7 +4,7 @@ Open your chakras by singing to their frequencies.
 
 You might want to
 
-- **[Try it out!][web]
+- **[Try it out!][web]**
 - [Donate using GitHub Sponsors][gh-sponsors]
 
 ## Setup
