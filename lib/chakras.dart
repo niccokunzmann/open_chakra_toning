@@ -48,6 +48,10 @@ class Chakra {
   }
 }
 
+class NoChakra extends Chakra {
+  NoChakra() : super(position: Point(x: 0, y: 0), sound: "") {}
+}
+
 class Root extends Chakra {
   Root({required super.position, required super.sound});
 }

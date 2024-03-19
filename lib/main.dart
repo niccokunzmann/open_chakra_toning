@@ -73,6 +73,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   ChakraPicture chakras = ChakraPictures().getChakraPicture();
   final player = AudioPlayer();
+  Chakra currentlyPlayingChakra = NoChakra();
 
   _MyHomePageState() {
     player.setReleaseMode(ReleaseMode.loop);
@@ -90,13 +91,19 @@ class _MyHomePageState extends State<MyHomePage> {
           alignment: Alignment.topCenter,
           fit: BoxFit.fill,
           child: GestureDetector(
-            onTap: () => {debugPrint("tap")},
             onTapDown: (details) {
               Chakra chakra = chakras.findClosestTo(Point(
                   x: details.localPosition.dx, y: details.localPosition.dy));
-              player.play(
-                AssetSource(chakra.soundAssetPath),
-              );
+              if (player.state == PlayerState.playing &&
+                  chakra == currentlyPlayingChakra) {
+                player.stop();
+                currentlyPlayingChakra = NoChakra();
+              } else {
+                player.play(
+                  AssetSource(chakra.soundAssetPath),
+                );
+                currentlyPlayingChakra = chakra;
+              }
             },
             child: ConstrainedBox(
               constraints: BoxConstraints(
