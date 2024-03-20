@@ -17,6 +17,7 @@
 */
 
 import 'dart:math';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 
 class Point {
@@ -55,10 +56,22 @@ class Chakra {
   String description() {
     return translate("chakra.description.$id");
   }
+
+  String get iconAssetPath {
+    return "assets/img/chakra-icons/$id.svg";
+  }
+
+  void playSoundWith(AudioPlayer player) {
+    player.play(
+      AssetSource(soundAssetPath),
+    );
+  }
 }
 
 class NoChakra extends Chakra {
   NoChakra() : super(position: Point(x: 0, y: 0), sound: "");
+
+  void playSoundWith(AudioPlayer player);
 }
 
 class Root extends Chakra {

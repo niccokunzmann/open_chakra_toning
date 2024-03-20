@@ -23,5 +23,9 @@
             "crown": "",
             "nochakra": ""
         }
+    },
+    "button": {
+        "play": "Play",
+        "pause": "Pause"    
     }
 }

@@ -75,6 +75,11 @@ class _MyHomePageState extends State<MyHomePage> {
   final player = AudioPlayer();
   Chakra currentlyPlayingChakra = NoChakra();
 
+  bool get isPlaying {
+    return player.state == PlayerState.playing ||
+        player.state == PlayerState.completed;
+  }
+
   _MyHomePageState() {
     player.setReleaseMode(ReleaseMode.loop);
   }
@@ -92,18 +97,16 @@ class _MyHomePageState extends State<MyHomePage> {
           fit: BoxFit.fill,
           child: GestureDetector(
             onTapDown: (details) {
-              Chakra chakra = chakras.findClosestTo(Point(
-                  x: details.localPosition.dx, y: details.localPosition.dy));
-              if (player.state == PlayerState.playing &&
-                  chakra == currentlyPlayingChakra) {
-                player.stop();
-                currentlyPlayingChakra = NoChakra();
-              } else {
-                player.play(
-                  AssetSource(chakra.soundAssetPath),
-                );
-                currentlyPlayingChakra = chakra;
-              }
+              setState(() {
+                Chakra chakra = chakras.findClosestTo(Point(
+                    x: details.localPosition.dx, y: details.localPosition.dy));
+                if (isPlaying && chakra == currentlyPlayingChakra) {
+                  player.stop();
+                } else {
+                  currentlyPlayingChakra = chakra;
+                  currentlyPlayingChakra.playSoundWith(player);
+                }
+              });
             },
             child: ConstrainedBox(
               constraints: BoxConstraints(
@@ -117,9 +120,18 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        onPressed: () {
+          setState(() {
+            if (isPlaying) {
+              player.pause();
+            } else {
+              currentlyPlayingChakra.playSoundWith(player);
+            }
+          });
+        },
+        tooltip:
+            isPlaying ? translate("button.pause") : translate("button.play"),
+        child: SvgPicture.asset(currentlyPlayingChakra.iconAssetPath),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
