@@ -17,6 +17,7 @@
 */
 
 import 'dart:math';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class Point {
   double x;
@@ -35,7 +36,7 @@ class Chakra {
 
   Chakra({required this.position, required this.sound});
 
-  String get name {
+  String get id {
     return runtimeType.toString().toLowerCase();
   }
 
@@ -45,6 +46,14 @@ class Chakra {
 
   String get soundAssetPath {
     return "sound/$sound";
+  }
+
+  String name() {
+    return translate("chakra.name.$id");
+  }
+
+  String description() {
+    return translate("chakra.description.$id");
   }
 }
 

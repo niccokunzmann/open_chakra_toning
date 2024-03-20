@@ -1,5 +1,27 @@
 {
     "app" : {
         "title": "Open Chakra Toning"
+    },
+    "chakra" : {
+        "name": {
+            "root": "Root Chakra",
+            "sacral": "Sacral Chakra",
+            "solarplexus": "Solar Plexus Chakra",
+            "heart": "Heart Chakra",
+            "throat": "Throat Chakra",
+            "thirdeye": "Third eye Chakra",
+            "crown": "Crown Chakra",
+            "nochakra": "No Chakra"
+        },
+        "description": {
+            "root": "",
+            "sacral": "",
+            "solarplexus": "",
+            "heart": "",
+            "throat": "",
+            "thirdeye": "",
+            "crown": "",
+            "nochakra": ""
+        }
     }
 }
