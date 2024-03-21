@@ -120,8 +120,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   minWidth: 1,
                   minHeight:
                       1), // from https://stackoverflow.com/a/60993103/1320237
-              child:
-                  SvgPicture.asset(chakras.imageAssetPath, fit: BoxFit.cover),
+              child: SvgPicture.asset(currentlyPlayingChakra.mapAssetPath,
+                  fit: BoxFit.cover),
             ),
           ),
         ),

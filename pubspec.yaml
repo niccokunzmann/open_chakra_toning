@@ -86,8 +86,8 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
   - assets/i18n/
-  - assets/img/
   - assets/img/chakra-icons/
+  - assets/img/chakra-map/
   - assets/sound/
 
   # An image asset can refer to one or more resolution-specific "variants", see

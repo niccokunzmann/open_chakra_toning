@@ -61,6 +61,10 @@ class Chakra {
     return "assets/img/chakra-icons/$id.svg";
   }
 
+  String get mapAssetPath {
+    return "assets/img/chakra-map/$id.svg";
+  }
+
   void playSoundWith(AudioPlayer player) {
     player.play(
       AssetSource(soundAssetPath),
@@ -71,6 +75,7 @@ class Chakra {
 class NoChakra extends Chakra {
   NoChakra() : super(position: Point(x: 0, y: 0), sound: "");
 
+  @override
   void playSoundWith(AudioPlayer player);
 }
 
@@ -110,11 +115,9 @@ class ChakraPicture {
   Throat throat;
   ThirdEye thirdEye;
   Crown crown;
-  String path;
 
   ChakraPicture(
-      {required this.path,
-      required this.root,
+      {required this.root,
       required this.sacral,
       required this.solarPlexus,
       required this.heart,
@@ -133,23 +136,22 @@ class ChakraPicture {
             : chakra2));
   }
 
-  String get imageAssetPath {
-    return "assets/img/$path";
+  Chakra get none {
+    return NoChakra();
   }
 }
 
 class ChakraPictures {
   ChakraPicture getChakraPicture() {
     return ChakraPicture(
-      path: "Chakras_map.svg",
-      crown: Crown(position: Point(x: 160, y: 44), sound: "chakra1.mp3"),
-      thirdEye: ThirdEye(position: Point(x: 160, y: 80), sound: "chakra2.mp3"),
-      throat: Throat(position: Point(x: 160, y: 145), sound: "chakra1.mp3"),
-      heart: Heart(position: Point(x: 160, y: 195), sound: "chakra2.mp3"),
+      crown: Crown(position: Point(x: 250, y: 63), sound: "chakra1.mp3"),
+      thirdEye: ThirdEye(position: Point(x: 250, y: 111), sound: "chakra2.mp3"),
+      throat: Throat(position: Point(x: 250, y: 189), sound: "chakra1.mp3"),
+      heart: Heart(position: Point(x: 250, y: 248), sound: "chakra2.mp3"),
       solarPlexus:
-          SolarPlexus(position: Point(x: 160, y: 245), sound: "chakra1.mp3"),
-      sacral: Sacral(position: Point(x: 160, y: 294), sound: "chakra2.mp3"),
-      root: Root(position: Point(x: 160, y: 342), sound: "chakra1.mp3"),
+          SolarPlexus(position: Point(x: 250, y: 300), sound: "chakra1.mp3"),
+      sacral: Sacral(position: Point(x: 250, y: 354), sound: "chakra2.mp3"),
+      root: Root(position: Point(x: 250, y: 415), sound: "chakra1.mp3"),
     );
   }
 }
