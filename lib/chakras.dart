@@ -76,7 +76,7 @@ class NoChakra extends Chakra {
   NoChakra() : super(position: Point(x: 0, y: 0), sound: "");
 
   @override
-  void playSoundWith(AudioPlayer player);
+  void playSoundWith(AudioPlayer player) {}
 }
 
 class Root extends Chakra {
