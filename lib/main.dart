@@ -16,16 +16,23 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'chakras.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:path/path.dart' as path;
 
 void main() async {
   var delegate = await LocalizationDelegate.create(
-      fallbackLocale: 'en_US', supportedLocales: ['en_US', 'es', 'fa']);
+      fallbackLocale: 'en',
+      supportedLocales: Directory('assets/i18n')
+          .listSync(recursive: false)
+          .map((e) => path.basenameWithoutExtension(e.toString()))
+          .toList());
 
   runApp(LocalizedApp(delegate, MyApp()));
 }
