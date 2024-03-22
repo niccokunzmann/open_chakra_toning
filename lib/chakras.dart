@@ -37,9 +37,7 @@ class Chakra {
 
   Chakra({required this.position, required this.sound});
 
-  String get id {
-    return runtimeType.toString().toLowerCase();
-  }
+  String get id => "chakra";
 
   double distanceTo(Point point) {
     return position.distanceTo(point);
@@ -74,6 +72,8 @@ class Chakra {
 
 class NoChakra extends Chakra {
   NoChakra() : super(position: Point(x: 0, y: 0), sound: "");
+  @override
+  String get id => "no-chakra";
 
   @override
   void playSoundWith(AudioPlayer player) {}
@@ -81,30 +81,44 @@ class NoChakra extends Chakra {
 
 class Root extends Chakra {
   Root({required super.position, required super.sound});
+  @override
+  String get id => "root";
 }
 
 class Sacral extends Chakra {
   Sacral({required super.position, required super.sound});
+  @override
+  String get id => "sacral";
 }
 
 class SolarPlexus extends Chakra {
   SolarPlexus({required super.position, required super.sound});
+  @override
+  String get id => "solar-plexus";
 }
 
 class Heart extends Chakra {
   Heart({required super.position, required super.sound});
+  @override
+  String get id => "heart";
 }
 
 class Throat extends Chakra {
   Throat({required super.position, required super.sound});
+  @override
+  String get id => "throat";
 }
 
 class ThirdEye extends Chakra {
   ThirdEye({required super.position, required super.sound});
+  @override
+  String get id => "third-eye";
 }
 
 class Crown extends Chakra {
   Crown({required super.position, required super.sound});
+  @override
+  String get id => "crown";
 }
 
 class ChakraPicture {
