@@ -144,14 +144,20 @@ class ChakraPicture {
 class ChakraPictures {
   ChakraPicture getChakraPicture() {
     return ChakraPicture(
-      crown: Crown(position: Point(x: 250, y: 63), sound: "chakra1.mp3"),
-      thirdEye: ThirdEye(position: Point(x: 250, y: 111), sound: "chakra2.mp3"),
-      throat: Throat(position: Point(x: 250, y: 189), sound: "chakra1.mp3"),
-      heart: Heart(position: Point(x: 250, y: 248), sound: "chakra2.mp3"),
-      solarPlexus:
-          SolarPlexus(position: Point(x: 250, y: 300), sound: "chakra1.mp3"),
-      sacral: Sacral(position: Point(x: 250, y: 354), sound: "chakra2.mp3"),
-      root: Root(position: Point(x: 250, y: 415), sound: "chakra1.mp3"),
+      crown: Crown(
+          position: Point(x: 250, y: 63), sound: "solfeggio-voice/963.ogg"),
+      thirdEye: ThirdEye(
+          position: Point(x: 250, y: 111), sound: "solfeggio-voice/852.ogg"),
+      throat: Throat(
+          position: Point(x: 250, y: 189), sound: "solfeggio-voice/741.ogg"),
+      heart: Heart(
+          position: Point(x: 250, y: 248), sound: "solfeggio-voice/639.ogg"),
+      solarPlexus: SolarPlexus(
+          position: Point(x: 250, y: 300), sound: "solfeggio-voice/528.ogg"),
+      sacral: Sacral(
+          position: Point(x: 250, y: 354), sound: "solfeggio-voice/417.ogg"),
+      root: Root(
+          position: Point(x: 250, y: 415), sound: "solfeggio-voice/396.ogg"),
     );
   }
 }

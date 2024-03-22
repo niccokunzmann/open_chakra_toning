@@ -88,7 +88,7 @@ flutter:
   - assets/i18n/
   - assets/img/chakra-icons/
   - assets/img/chakra-map/
-  - assets/sound/
+  - assets/sound/solfeggio-voice/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
