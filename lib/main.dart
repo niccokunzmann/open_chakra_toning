@@ -106,26 +106,28 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(translate("app.title")),
         centerTitle: true,
       ),
-      body: GestureDetector(
-        onTapDown: (details) {
-          setState(() {
-            Chakra chakra = chakras.findClosestTo(Point(
-                x: details.localPosition.dx *
-                    currentlyPlayingChakra.mapHeightPx /
-                    actualChakraMapHeight,
-                y: details.localPosition.dy *
-                    currentlyPlayingChakra.mapHeightPx /
-                    actualChakraMapHeight));
-            if (isPlaying && chakra == currentlyPlayingChakra) {
-              player.stop();
-            } else {
-              currentlyPlayingChakra = chakra;
-              currentlyPlayingChakra.playSoundWith(player);
-            }
-          });
-        },
-        child: SvgPicture.asset(currentlyPlayingChakra.mapAssetPath,
-            width: actualChakraMapHeight),
+      body: Center(
+        child: GestureDetector(
+          onTapDown: (details) {
+            setState(() {
+              Chakra chakra = chakras.findClosestTo(Point(
+                  x: details.localPosition.dx *
+                      currentlyPlayingChakra.mapHeightPx /
+                      actualChakraMapHeight,
+                  y: details.localPosition.dy *
+                      currentlyPlayingChakra.mapHeightPx /
+                      actualChakraMapHeight));
+              if (isPlaying && chakra == currentlyPlayingChakra) {
+                player.stop();
+              } else {
+                currentlyPlayingChakra = chakra;
+                currentlyPlayingChakra.playSoundWith(player);
+              }
+            });
+          },
+          child: SvgPicture.asset(currentlyPlayingChakra.mapAssetPath,
+              width: actualChakraMapHeight),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
