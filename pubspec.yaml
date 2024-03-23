@@ -122,6 +122,10 @@ flutter:
 flutter_launcher_icons:
   # To update the icon
   # see https://pub.dev/packages/flutter_launcher_icons
+  #
+  # To update the launcher icon, run this:
+  #
+  #     flutter pub run flutter_launcher_icons
   android: "launcher_icon"
   ios: true
   image_path: "assets/img/icon/icon.png"
