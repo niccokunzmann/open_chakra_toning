@@ -16,6 +16,8 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -84,40 +86,46 @@ class _MyHomePageState extends State<MyHomePage> {
     player.setReleaseMode(ReleaseMode.loop);
   }
 
+  double get actualChakraMapHeight {
+    return min(
+        MediaQuery.of(context).size.height, MediaQuery.of(context).size.width);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Padding(
+            padding: EdgeInsets.only(left: 16.0),
+            child: SvgPicture.asset(
+              "assets/img/icon/icon.svg",
+            )),
+        titleSpacing: 0,
+        automaticallyImplyLeading: false,
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(translate("app.title")),
+        centerTitle: true,
       ),
-      body: Center(
-        child: FittedBox(
-          alignment: Alignment.topCenter,
-          fit: BoxFit.fill,
-          child: GestureDetector(
-            onTapDown: (details) {
-              setState(() {
-                Chakra chakra = chakras.findClosestTo(Point(
-                    x: details.localPosition.dx, y: details.localPosition.dy));
-                if (isPlaying && chakra == currentlyPlayingChakra) {
-                  player.stop();
-                } else {
-                  currentlyPlayingChakra = chakra;
-                  currentlyPlayingChakra.playSoundWith(player);
-                }
-              });
-            },
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                  minWidth: 1,
-                  minHeight:
-                      1), // from https://stackoverflow.com/a/60993103/1320237
-              child: SvgPicture.asset(currentlyPlayingChakra.mapAssetPath,
-                  fit: BoxFit.cover),
-            ),
-          ),
-        ),
+      body: GestureDetector(
+        onTapDown: (details) {
+          setState(() {
+            Chakra chakra = chakras.findClosestTo(Point(
+                x: details.localPosition.dx *
+                    currentlyPlayingChakra.mapHeightPx /
+                    actualChakraMapHeight,
+                y: details.localPosition.dy *
+                    currentlyPlayingChakra.mapHeightPx /
+                    actualChakraMapHeight));
+            if (isPlaying && chakra == currentlyPlayingChakra) {
+              player.stop();
+            } else {
+              currentlyPlayingChakra = chakra;
+              currentlyPlayingChakra.playSoundWith(player);
+            }
+          });
+        },
+        child: SvgPicture.asset(currentlyPlayingChakra.mapAssetPath,
+            width: actualChakraMapHeight),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

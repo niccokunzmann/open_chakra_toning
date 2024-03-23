@@ -63,6 +63,10 @@ class Chakra {
     return "assets/img/chakra-map/$id.svg";
   }
 
+  int get mapHeightPx {
+    return 500;
+  }
+
   void playSoundWith(AudioPlayer player) {
     player.play(
       AssetSource(soundAssetPath),
