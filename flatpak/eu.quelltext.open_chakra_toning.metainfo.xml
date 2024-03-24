@@ -67,17 +67,21 @@
   <url type="vcs-browser">https://github.com/niccokunzmann/open_chakra_toning/issues</url>
   
   <launchable type="desktop-id">eu.quelltext.open_chakra_toning.desktop</launchable>
+  <!--
+    Screenshots
+    see https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-screenshots
+  -->
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/niccokunzmann/open_chakra_toning/main/metadata/en/images/phoneScreenshots/third-eye.png</image>
+      <image>https://raw.githubusercontent.com/niccokunzmann/open_chakra_toning/main/flatpak/screenshots/third-eye.png</image>
       <caption>Open Chakra Toning with the Third Eye Chakra</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/niccokunzmann/open_chakra_toning/main/metadata/en/images/phoneScreenshots/crown.png</image>
+      <image>https://raw.githubusercontent.com/niccokunzmann/open_chakra_toning/main/flatpak/screenshots/crown.png</image>
       <caption>Open Chakra Toning with the Crown Chakra</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/niccokunzmann/open_chakra_toning/main/metadata/en/images/phoneScreenshots/root.png</image>
+      <image>https://raw.githubusercontent.com/niccokunzmann/open_chakra_toning/main/flatpak/screenshots/root.png</image>
       <caption>Open Chakra Toning with the Root Chakra</caption>
     </screenshot>
   </screenshots>
