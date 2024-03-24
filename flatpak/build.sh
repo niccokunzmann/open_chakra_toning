@@ -55,7 +55,7 @@ flatpak run --command=flatpak-builder-lint org.flatpak.Builder manifest "$manife
 flatpak run --command=flatpak-builder-lint org.flatpak.Builder "$repo" "$repo"
 
 ## flatpak file
-flatpak build-bundle repo "$id.flatpak" "$id"
+flatpak build-bundle repo "../build/$id.flatpak" "$id"
 
 echo "You can now run the app:"
 echo
