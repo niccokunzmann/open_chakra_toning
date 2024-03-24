@@ -26,10 +26,11 @@ repo="repo"
 reponame="open_chakra_toning_repo"
 builder="flatpak run org.flatpak.Builder"
 
+set -e
 cd "`dirname \"$0\"`"
 
 ## Install the build environment
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install -y org.flatpak.Builder
 
 ## Uninstall the currently installed application
