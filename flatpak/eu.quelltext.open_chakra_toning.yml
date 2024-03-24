@@ -7,14 +7,10 @@ modules:
   - name: open_chakra_toning
     buildsystem: simple
     build-commands:
-#      - install -D bundle/open_chakra_toning /app/bin/open_chakra_toning
-      - install -D open_chakra_toning.sh /app/bin/open_chakra_toning
-      - mv bundle /app/bundle
+      - flatpak/inside.sh
     sources:
       - type: dir
-        path: ../build/linux/x64/release/
-      - type: file
-        path: open_chakra_toning.sh
+        path: ..
 finish-args: # see https://docs.flatpak.org/en/latest/manifests.html#finishing
   # X11 + XShm access
   - --share=ipc

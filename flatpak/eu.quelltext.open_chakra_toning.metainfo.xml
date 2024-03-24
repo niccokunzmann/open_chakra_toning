@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>eu.quelltext.open_chakra_toning</id>
+  
+  <name>Open Chakra Toning</name>
+  <summary>Open your chakras with your voice</summary>
+
+  <developer id="tld.vendor">
+    <name>Nicco Kunzmann</name>
+  </developer>
+
+  <metadata_license>CC-BY-SA-4.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+
+  <branding>
+    <color type="primary" scheme_preference="light">#eeeeee</color>
+    <color type="primary" scheme_preference="dark">#222222</color>
+  </branding>
+  
+  <description>
+    <p>
+      Open your chakras with your voice. Choose between the different chakras and their frequencies. Meditate with guidance.
+    </p>
+  </description>
+
+  <provides>
+    <id>eu.quelltext.open_chakra_toning</id>
+  </provides>
+
+<!--
+  <icon type="stock">eu.quelltext.open_chakra_toning</icon>
+  <icon type="remote">https://raw.githubusercontent.com/niccokunzmann/open_chakra_toning/main/assets/img/icon/icon.svg</icon>
+-->
+  <url type="bugtracker">https://github.com/niccokunzmann/open_chakra_toning/issues</url>
+  <url type="homepage">https://niccokunzmann.github.io/open_chakra_toning/</url>
+  <url type="donation">https://github.com/niccokunzmann/open_chakra_toning/</url>
+  <url type="contact">https://github.com/niccokunzmann/open_chakra_toning/</url>
+  <url type="faq">https://github.com/niccokunzmann/open_chakra_toning/</url>
+  <url type="translate">https://github.com/niccokunzmann/open_chakra_toning/</url>
+  <url type="vcs-browser">https://github.com/niccokunzmann/open_chakra_toning/issues</url>
+  
+  <launchable type="desktop-id">open_chakra_toning.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/niccokunzmann/open_chakra_toning/main/metadata/en/images/phoneScreenshots/third-eye.png</image>
+      <caption>Open Chakra Toning with the Third Eye Chakra</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/niccokunzmann/open_chakra_toning/main/metadata/en/images/phoneScreenshots/crown.png</image>
+      <caption>Open Chakra Toning with the Crown Chakra</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/niccokunzmann/open_chakra_toning/main/metadata/en/images/phoneScreenshots/root.png</image>
+      <caption>Open Chakra Toning with the Root Chakra</caption>
+    </screenshot>
+  </screenshots>
+
+  <releases>
+    <release version="1.0.0" date="2024-03-24">
+      <url type="details">https://github.com/niccokunzmann/open_chakra_toning/blob/main/README.md#changelog</url>
+      <description>
+        <p>First version</p>
+        <ul>
+          <li>tones for chakras</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+
+  <custom>
+    <value key="flathub::manifest">https://raw.githubusercontent.com/niccokunzmann/open_chakra_toning/main/flatpak/eu.quelltext.open_chakra_toning.yml</value>
+   </custom>
+</component>

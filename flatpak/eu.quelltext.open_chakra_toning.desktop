@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Open Chakra Toning
+Exec=open_chakra_toning
+Type=Application
+Icon=eu.quelltext.open_chakra_toning.svg
+Categories=AudioVideo;
+Terminal=false
