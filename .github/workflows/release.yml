@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: update dependencies
-        run: apt update
+        run: sudo apt update
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
       - run: flutter pub get
