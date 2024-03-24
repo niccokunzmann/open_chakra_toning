@@ -34,7 +34,7 @@ flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/fl
 flatpak install -y org.flatpak.Builder
 
 ## Uninstall the currently installed application
-flatpak uninstall -y eu.quelltext.open_chakra_toning
+flatpak uninstall -y eu.quelltext.open_chakra_toning || true
 
 $builder --force-clean "$builddir" "$manifest"
 ## (1) The following commands installs the app directly
