@@ -62,7 +62,7 @@
   <url type="translate">https://github.com/niccokunzmann/open_chakra_toning/</url>
   <url type="vcs-browser">https://github.com/niccokunzmann/open_chakra_toning/issues</url>
   
-  <launchable type="desktop-id">open_chakra_toning.desktop</launchable>
+  <launchable type="desktop-id">eu.quelltext.open_chakra_toning.desktop</launchable>
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/niccokunzmann/open_chakra_toning/main/metadata/en/images/phoneScreenshots/third-eye.png</image>
