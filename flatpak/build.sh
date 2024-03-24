@@ -30,8 +30,8 @@ set -e
 cd "`dirname \"$0\"`"
 
 ## Install the build environment
-flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install -y org.flatpak.Builder
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo || flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install -y org.flatpak.Builder flathub org.freedesktop.Platform//23.08 org.freedesktop.Sdk//23.08
 
 ## Uninstall the currently installed application
 flatpak uninstall -y eu.quelltext.open_chakra_toning || true
