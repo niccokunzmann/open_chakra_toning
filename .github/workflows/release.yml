@@ -1,0 +1,65 @@
+# Build and release versions of the app.
+name: release
+
+on:
+  push:
+    branches:
+    - main
+    tags:
+    - v*
+  pull_request:
+  schedule:
+    - cron: '14 7 * * 0'  # run once a week on Sunday
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+      - run: flutter pub get
+      - run: flutter test
+      - name: create artifatcs directory
+        run: mkdir -p artifacts
+      - name: build Android
+        run: |
+          flutter build apk
+          mv build/app/outputs/flutter-apk/app-release.apk artifacts/eu.quelltext.open_chakra_toning.apk
+#      - run: flutter build appbundle
+      - name: build web
+        run: |
+          flutter build web
+          (
+            cd build
+            mv web Open-Chakra-Toning
+            zip ../artifacts/Open-Chakra-Toning-web.zip Open-Chakra-Toning
+          )
+      - name: build flatpak
+        run: |
+          flatpak/build.sh
+          mv build/eu.quelltext.open_chakra_toning.flatpak artifacts/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: artifacts
+          path: artifacts/
+
+  deploy-github-release:
+    # only deploy on tags, see https://stackoverflow.com/a/58478262/1320237
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: reteieve build artifacts
+        uses: actions/download-artifact@master
+        with:
+          name: artifacts
+          path: artifacts/
+      - name: create release
+        uses: ncipollo/release-action@v1 # see https://github.com/ncipollo/release-action
+        with:
+          allowUpdates: true
+          artifacts: "artifacts/*"
