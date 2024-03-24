@@ -30,8 +30,11 @@ set -e
 cd "`dirname \"$0\"`"
 
 ## Install the build environment
+## see https://docs.flatpak.org/en/latest/first-build.html
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo || flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install -y org.flatpak.Builder flathub org.freedesktop.Platform//23.08 org.freedesktop.Sdk//23.08
+flatpak install -y flathub org.flatpak.Builder
+flatpak install -y flathub org.freedesktop.Platform//23.08
+flatpak install -y flathub org.freedesktop.Sdk//23.08
 
 ## Uninstall the currently installed application
 flatpak uninstall -y eu.quelltext.open_chakra_toning || true
@@ -42,7 +45,7 @@ $builder --force-clean "$builddir" "$manifest"
 
 ## (2) The following commands install the app according to the submission section
 ## see https://docs.flathub.org/docs/for-app-authors/submission#before-submission
-flatpak run org.flatpak.Builder --force-clean --user --install --install-deps-from=flathub --ccache --mirror-screenshots-url=https://dl.flathub.org/media/ --repo="$repo" "$builddir" "$manifest"
+flatpak run org.flatpak.Builder --force-clean --user --install --ccache --mirror-screenshots-url=https://dl.flathub.org/media/ --repo="$repo" "$builddir" "$manifest"
 
 ## (3) The Following commands install the app through a repository
 #$builder --repo=repo --force-clean "$builddir" "$manifest"
