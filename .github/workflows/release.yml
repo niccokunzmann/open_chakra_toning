@@ -36,8 +36,8 @@ jobs:
             zip Open-Chakra-Toning-linux-x64.zip Open-Chakra-Toning
           )
           mv build/linux/x64/release/Open-Chakra-Toning-linux-x64.zip artifacts
-          - name: build flatpak
-          run: |
+      - name: build flatpak
+        run: |
           sudo apt install -qq flatpak
           flatpak/build.sh
           mv build/eu.quelltext.open_chakra_toning.flatpak artifacts/
