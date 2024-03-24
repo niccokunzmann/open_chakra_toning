@@ -36,6 +36,7 @@ flatpak-builder --force-clean "$builddir" "$manifest"
 
 ## The Following commands install the app through a repository
 flatpak-builder --repo=repo --force-clean "$builddir" "$manifest"
+flatpak remote-delete --force "$reponame"
 flatpak --user remote-add --no-gpg-verify "$reponame" "$repo"
 flatpak --user install -y "$reponame" "$id"
 
