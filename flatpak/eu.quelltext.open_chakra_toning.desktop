@@ -2,6 +2,6 @@
 Name=Open Chakra Toning
 Exec=open_chakra_toning
 Type=Application
-Icon=eu.quelltext.open_chakra_toning.svg
+Icon=eu.quelltext.open_chakra_toning
 Categories=AudioVideo;
 Terminal=false
