@@ -40,7 +40,7 @@ $builder --force-clean "$builddir" "$manifest"
 
 ## (2) The following commands install the app according to the submission section
 ## see https://docs.flathub.org/docs/for-app-authors/submission#before-submission
-flatpak run org.flatpak.Builder --force-clean --sandbox --user --install --ccache --mirror-screenshots-url=https://dl.flathub.org/media/ --repo="$repo" "$builddir" "$manifest"
+flatpak run org.flatpak.Builder --force-clean --user --install --ccache --mirror-screenshots-url=https://dl.flathub.org/media/ --repo="$repo" "$builddir" "$manifest"
 
 ## (3) The Following commands install the app through a repository
 #$builder --repo=repo --force-clean "$builddir" "$manifest"
