@@ -38,3 +38,5 @@ finish-args: # see https://docs.flatpak.org/en/latest/manifests.html#finishing
 #  - --share=network
   # Needs to save files locally
 #  - --filesystem=xdg-documents
+  # Needs audio
+  - --socket=pulseaudio
