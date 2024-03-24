@@ -18,6 +18,11 @@ The [`main` branch](https://github.com/niccokunzmann/open_chakra_toning/tree/mai
 The [`gh-pages` branch](https://github.com/niccokunzmann/open_chakra_toning/tree/gh-pages) is a [web deployment of the app][web].  
 The [`sound` branch](https://github.com/niccokunzmann/open_chakra_toning/tree/sound) contains raw sound data.  
 
+## Changelog
+
+- v1.0.0
+  - Create first version of the app
+
 [web]: https://niccokunzmann.github.io/open_chakra_toning/
 [gh-sponsors]: https://github.com/sponsors/niccokunzmann
 
