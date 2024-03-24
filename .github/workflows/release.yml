@@ -28,6 +28,15 @@ jobs:
           flutter build apk
           mv build/app/outputs/flutter-apk/app-release.apk artifacts/eu.quelltext.open_chakra_toning.apk
 #      - run: flutter build appbundle
+      - name: build Linux
+        run: |
+          flutter build linux
+          mv build/linux/x64/release/bundle/ build/linux/x64/release/Open-Chakra-Toning
+          (
+            cd build/linux/x64/release/
+            zip Open-Chakra-Toning-linux-x64.zip Open-Chakra-Toning
+          )
+          mv build/linux/x64/release/Open-Chakra-Toning-linux-x64.zip artifacts
       - name: build web
         run: |
           flutter build web
@@ -38,6 +47,8 @@ jobs:
           )
       - name: build flatpak
         run: |
+          apt update
+          apt install flatpak
           flatpak/build.sh
           mv build/eu.quelltext.open_chakra_toning.flatpak artifacts/
       - uses: actions/upload-artifact@v4
