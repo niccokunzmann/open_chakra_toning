@@ -24,27 +24,38 @@ id="eu.quelltext.open_chakra_toning"
 manifest="$id.yml"
 repo="repo"
 reponame="open_chakra_toning_repo"
+builder="flatpak run org.flatpak.Builder"
 
 cd "`dirname \"$0\"`"
+
+## Install the build environment
+flatpak install -y org.flatpak.Builder
 
 ## Uninstall the currently installed application
 flatpak uninstall -y eu.quelltext.open_chakra_toning
 
-flatpak-builder --force-clean "$builddir" "$manifest"
-## The following commands installs the app directly
+$builder --force-clean "$builddir" "$manifest"
+## (1) The following commands installs the app directly
 #flatpak-builder --user --install --force-clean "$builddir" "$manifest"
 
-## The Following commands install the app through a repository
-flatpak-builder --repo=repo --force-clean "$builddir" "$manifest"
-flatpak remote-delete --force "$reponame"
-flatpak --user remote-add --no-gpg-verify "$reponame" "$repo"
-flatpak --user install -y "$reponame" "$id"
+## (2) The following commands install the app according to the submission section
+## see https://docs.flathub.org/docs/for-app-authors/submission#before-submission
+flatpak run org.flatpak.Builder --force-clean --sandbox --user --install --ccache --mirror-screenshots-url=https://dl.flathub.org/media/ --repo="$repo" "$builddir" "$manifest"
+
+## (3) The Following commands install the app through a repository
+#$builder --repo=repo --force-clean "$builddir" "$manifest"
+#flatpak remote-delete --force "$reponame"
+#flatpak --user remote-add --no-gpg-verify "$reponame" "$repo"
+#flatpak --user install -y "$reponame" "$id"
 
 ## Linter
 ## see https://docs.flathub.org/docs/for-app-authors/submission/#before-submission
 
 flatpak run --command=flatpak-builder-lint org.flatpak.Builder manifest "$manifest"
 flatpak run --command=flatpak-builder-lint org.flatpak.Builder "$repo" "$repo"
+
+## flatpak file
+flatpak build-bundle repo "$id.flatpak" "$id"
 
 echo "You can now run the app:"
 echo
