@@ -29,6 +29,7 @@ builder="flatpak run org.flatpak.Builder"
 cd "`dirname \"$0\"`"
 
 ## Install the build environment
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install -y org.flatpak.Builder
 
 ## Uninstall the currently installed application
