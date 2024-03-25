@@ -163,19 +163,19 @@ class ChakraPictures {
   ChakraPicture getChakraPicture() {
     return ChakraPicture(
       crown: Crown(
-          position: Point(x: 250, y: 63), sound: "solfeggio-voice/963.ogg"),
+          position: Point(x: 250, y: 63), sound: "solfeggio-voice/963.mp3"),
       thirdEye: ThirdEye(
-          position: Point(x: 250, y: 111), sound: "solfeggio-voice/852.ogg"),
+          position: Point(x: 250, y: 111), sound: "solfeggio-voice/852.mp3"),
       throat: Throat(
-          position: Point(x: 250, y: 189), sound: "solfeggio-voice/741.ogg"),
+          position: Point(x: 250, y: 189), sound: "solfeggio-voice/741.mp3"),
       heart: Heart(
-          position: Point(x: 250, y: 248), sound: "solfeggio-voice/639.ogg"),
+          position: Point(x: 250, y: 248), sound: "solfeggio-voice/639.mp3"),
       solarPlexus: SolarPlexus(
-          position: Point(x: 250, y: 300), sound: "solfeggio-voice/528.ogg"),
+          position: Point(x: 250, y: 300), sound: "solfeggio-voice/528.mp3"),
       sacral: Sacral(
-          position: Point(x: 250, y: 354), sound: "solfeggio-voice/417.ogg"),
+          position: Point(x: 250, y: 354), sound: "solfeggio-voice/417.mp3"),
       root: Root(
-          position: Point(x: 250, y: 415), sound: "solfeggio-voice/396.ogg"),
+          position: Point(x: 250, y: 415), sound: "solfeggio-voice/396.mp3"),
     );
   }
 }
