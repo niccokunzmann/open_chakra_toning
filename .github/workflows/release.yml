@@ -45,18 +45,10 @@ jobs:
             zip -r Open-Chakra-Toning-linux-x64.zip Open-Chakra-Toning
           )
           mv build/linux/x64/release/Open-Chakra-Toning-linux-x64.zip artifacts
-      - uses: actions/upload-artifact@v4
-        with:
-          name: artifacts
-          path: artifacts/Open-Chakra-Toning-linux-x64.zip
       - name: build Android
         run: |
           flutter build apk
           mv build/app/outputs/flutter-apk/app-release.apk artifacts/eu.quelltext.open_chakra_toning.apk
-      - uses: actions/upload-artifact@v4
-        with:
-          name: artifacts
-          path: artifacts/eu.quelltext.open_chakra_toning.apk
 #      - run: flutter build appbundle
       - name: build web
         run: |
@@ -69,7 +61,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: artifacts
-          path: artifacts/Open-Chakra-Toning-web.zip
+          path: artifacts/*
 
   flatpak:
     name: "Flatpak"
@@ -94,9 +86,17 @@ jobs:
     - name: flatpack - build
       uses: flathub-infra/flatpak-github-actions/flatpak-builder@master
       with:
-        bundle: Open-Chakra-Toning-linux-x64.flatpak
+        bundle: Open-Chakra-Toning-linux.flatpak
         manifest-path: flatpak/eu.quelltext.open_chakra_toning.yml
-        cache-key: flatpak-builder-${{ github.sha }}
+    - name: "find flatpak and add it to the artifacts"
+      run: |
+        find | grep .flatpak
+        mv *.flatpak artifacts/
+    - uses: actions/upload-artifact@v4
+      with:
+        name: artifacts
+        path: artifacts/*
+        overwrite: true
 
   deploy-github-release:
     # only deploy on tags, see https://stackoverflow.com/a/58478262/1320237
@@ -107,7 +107,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: reteieve build artifacts
+      - name: retrieve build artifacts
         uses: actions/download-artifact@master
         with:
           name: artifacts
