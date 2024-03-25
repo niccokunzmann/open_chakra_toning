@@ -51,7 +51,7 @@ jobs:
           reponame="ci_repo"
           (
             cd flatpak
-            flatpak run org.flatpak.Builder --force-clean --ccache --repo="$repo" \
+            sudo flatpak run org.flatpak.Builder --force-clean --ccache --repo="$repo" \
               --mirror-screenshots-url=https://dl.flathub.org/media/ "$builddir" "$manifest"
           )
       - name: flatpak - install
