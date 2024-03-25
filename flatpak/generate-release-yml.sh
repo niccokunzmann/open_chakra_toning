@@ -22,17 +22,21 @@
 set -e
 cd "`dirname \"$0\"`"
 
-HASH="$1"
-URL="$2"
+TAG="$1"
 
-if [ -z "$HASH" ] ||  [ -z "$URL" ]; then
-  echo "$0 SHA256SUM URL"
+
+if [ -z "$TAG" ];then
+  echo "$0 TAG"
   echo
-  echo " SHA256SUM - the hash of the URL"
-  echo " SHA256SUM - the URL"
+  echo " TAG - the tag"
   exit
 fi
 
+download="/tmp/$TAG.flatpak.source"
+url="https://github.com/niccokunzmann/open_chakra_toning/releases/download/$TAG/Open-Chakra-Toning-linux-x64.zip"
+wget -cO "$download" "$url"
+hash="`sha256sum $download | awk '{print $1;}'`"
+
 cat "eu.quelltext.open_chakra_toning.yml" | \
     sed "s/- type: dir/- type: archive/g" | \
-    sed -r "s|( +)path: Open-Chakra-Toning|\\1url: $URL\n\\1sha256: $HASH|g"
+    sed -r "s|( +)path: Open-Chakra-Toning|\\1url: $url\n\\1sha256: $hash|g"
