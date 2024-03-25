@@ -1,5 +1,8 @@
 # Open Chakra Toning
 
+[![gh-pages](https://github.com/niccokunzmann/open_chakra_toning/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/niccokunzmann/open_chakra_toning/actions/workflows/gh-pages.yml)
+[![release](https://github.com/niccokunzmann/open_chakra_toning/actions/workflows/release.yml/badge.svg)](https://github.com/niccokunzmann/open_chakra_toning/actions/workflows/release.yml)
+
 Open your chakras by singing to their frequencies.
 
 You might want to
