@@ -45,10 +45,18 @@ jobs:
             zip -r Open-Chakra-Toning-linux-x64.zip Open-Chakra-Toning
           )
           mv build/linux/x64/release/Open-Chakra-Toning-linux-x64.zip artifacts
+      - uses: actions/upload-artifact@v4
+        with:
+          name: artifacts
+          path: artifacts/Open-Chakra-Toning-linux-x64.zip
       - name: build Android
         run: |
           flutter build apk
           mv build/app/outputs/flutter-apk/app-release.apk artifacts/eu.quelltext.open_chakra_toning.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: artifacts
+          path: artifacts/eu.quelltext.open_chakra_toning.apk
 #      - run: flutter build appbundle
       - name: build web
         run: |
@@ -61,7 +69,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: artifacts
-          path: artifacts/*
+          path: artifacts/Open-Chakra-Toning-web.zip
 
   flatpak:
     name: "Flatpak"
