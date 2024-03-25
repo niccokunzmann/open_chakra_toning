@@ -31,7 +31,7 @@ cd "`dirname \"$0\"`"
 
 echo "Install the build environment"
 ## see https://docs.flatpak.org/en/latest/first-build.html
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo || flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo || sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install -y flathub org.flatpak.Builder
 flatpak install -y flathub org.freedesktop.Platform//23.08
 flatpak install -y flathub org.freedesktop.Sdk//23.08
