@@ -52,11 +52,14 @@ jobs:
 
           flatpak run org.flatpak.Builder --force-clean --ccache --user --repo="$repo" \
             --mirror-screenshots-url=https://dl.flathub.org/media/ "$builddir" "$manifest"
+      - name: flatpak - install
+        run: |
           flatpak --user remote-add --no-gpg-verify "$reponame" "$repo"
           flatpak --user install -y "$reponame" "$id"
-          flatpak/lint.sh
-
-          mv build/eu.quelltext.open_chakra_toning.flatpak artifacts/
+      - name: flatpak - lint
+        run: flatpak/lint.sh
+      - name: flatpak - artifact
+        run: mv build/eu.quelltext.open_chakra_toning.flatpak artifacts/
       - name: build Android
         run: |
           flutter build apk
