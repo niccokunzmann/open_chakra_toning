@@ -69,6 +69,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+  msix: ^3.16.7
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -128,17 +129,34 @@ flutter_launcher_icons:
   #     flutter pub run flutter_launcher_icons
   android: "launcher_icon"
   ios: true
-  image_path: "assets/img/icon/icon.png"
+  image_path: "assets/img/icon/icon-512.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
   web:
     generate: true
-    image_path: "assets/img/icon/icon.png"
+    image_path: "assets/img/icon/icon-512.png"
     background_color: "#222222"
     theme_color: "#222222"
   windows:
     generate: true
-    image_path: "assets/img/icon/icon.png"
+    image_path: "assets/img/icon/icon-512.png"
     icon_size: 256 # min:48, max:256, default: 48
   macos:
     generate: true
-    image_path: "assets/img/icon/icon.png"
+    image_path: "assets/img/icon/icon-512.png"
+
+msix_config:
+  #
+  # Create MSIX installer for Windows
+  # see https://pub.dev/packages/msix
+  #
+  #     dart run msix:create
+  #
+  display_name: Open Chakra Toning
+  publisher_display_name: Nicco Kunzmann
+  identity_name: NiccoKunzmann.OpenChakraToning
+  msix_version: 1.0.0.0
+  logo_path: "assets/img/icon/icon-512.png"
+  # for capabilities look at https://learn.microsoft.com/en-us/windows/uwp/packaging/app-capability-declarations
+  capabilities: 
+  store: true
+  publisher: CN=1C5DDFE7-9BBE-4E4F-9A4F-524E20E05E93
