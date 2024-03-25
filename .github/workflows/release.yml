@@ -1,5 +1,5 @@
 # Build and release versions of the app.
-name: release
+name: "Build, Test, Release"
 
 on:
   push:
@@ -13,61 +13,87 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-android:
+    name: "Android Build"
     runs-on: ubuntu-latest
-
     steps:
-      - name: update dependencies
-        run: sudo apt update
-      - uses: actions/checkout@v4
-      - uses: subosito/flutter-action@v2
-      - run: flutter pub get
-      - run: flutter test
-      - name: create artifatcs directory
-        run: mkdir -p artifacts
-      - name: build Linux - install depenencies
-        run: sudo apt install -qq libgtk-3-0 libblkid1 liblzma5 ninja-build libgtk-3-dev clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev libgstreamer1.0-dev libunwind-dev libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-good gstreamer1.0-plugins-bad
-      - name: build Linux
-        run: |
-          flutter build linux
-          target="build/linux/x64/release/Open-Chakra-Toning"
-          mv build/linux/x64/release/bundle "$target"
-          # add files for flatpak build
-          cp -r \
-            flatpak/inside.sh \
-            flatpak/eu.quelltext.open_chakra_toning.metainfo.xml \
-            flatpak/eu.quelltext.open_chakra_toning.desktop \
-            flatpak/open_chakra_toning.sh \
-            assets/img/icon \
-            "$target"
-          (
-            cd build/linux/x64/release/
-            zip -r Open-Chakra-Toning-linux-x64.zip Open-Chakra-Toning
-          )
-          mv build/linux/x64/release/Open-Chakra-Toning-linux-x64.zip artifacts
-      - name: build Android
-        run: |
-          flutter build apk
-          mv build/app/outputs/flutter-apk/app-release.apk artifacts/eu.quelltext.open_chakra_toning.apk
-#      - run: flutter build appbundle
-      - name: build web
-        run: |
-          flutter build web
-          (
-            cd build
-            mv web Open-Chakra-Toning
-            zip -r ../artifacts/Open-Chakra-Toning-web.zip Open-Chakra-Toning
-          )
-      - uses: actions/upload-artifact@v4
-        with:
-          name: artifacts
-          path: artifacts/*
+    - uses: actions/checkout@v4
+    - uses: subosito/flutter-action@v2
+    - name: build Android
+      run: |
+        flutter build apk
+        mv build/app/outputs/flutter-apk/app-release.apk eu.quelltext.open_chakra_toning.apk
+    - uses: actions/upload-artifact@v4
+      with:
+        name: android
+        path: eu.quelltext.open_chakra_toning.apk
 
-  flatpak:
-    name: "Flatpak"
+  build-linux:
+    name: "Linux Build"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: subosito/flutter-action@v2
+    - name: update dependencies
+      run: sudo apt update
+    - name: install depenencies
+      run: sudo apt install -qq libgtk-3-0 libblkid1 liblzma5 ninja-build libgtk-3-dev clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev libgstreamer1.0-dev libunwind-dev libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-good gstreamer1.0-plugins-bad
+    - name: build
+      run: |
+        flutter build linux
+        target="build/linux/x64/release/Open-Chakra-Toning"
+        mv build/linux/x64/release/bundle "$target"
+        # add files for flatpak build
+        cp -r \
+          flatpak/inside.sh \
+          flatpak/eu.quelltext.open_chakra_toning.metainfo.xml \
+          flatpak/eu.quelltext.open_chakra_toning.desktop \
+          flatpak/open_chakra_toning.sh \
+          assets/img/icon \
+          "$target"
+        (
+          cd build/linux/x64/release/
+          zip -r Open-Chakra-Toning-linux-x64.zip Open-Chakra-Toning
+        )
+        mv build/linux/x64/release/Open-Chakra-Toning-linux-x64.zip .
+    - uses: actions/upload-artifact@v4
+      with:
+        name: linux
+        path: Open-Chakra-Toning-linux-x64.zip
+  
+  build-web:
+    name: "Web Build"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: subosito/flutter-action@v2
+    - name: build web
+      run: |
+        flutter build web
+        (
+          cd build
+          mv web Open-Chakra-Toning
+          zip -r ../Open-Chakra-Toning-web.zip Open-Chakra-Toning
+        )
+    - uses: actions/upload-artifact@v4
+      with:
+        name: web
+        path: Open-Chakra-Toning-linux-x64.zip
+
+  test-flutter:
+    name: "Flutter Tests"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: subosito/flutter-action@v2
+    - run: flutter pub get
+    - run: flutter test
+
+  build-flatpak:
+    name: "Flatpak Build"
     runs-on: ubuntu-latest
     needs:
-      - build
+      - build-linux
     container:
       image: ghcr.io/flathub-infra/flatpak-github-actions:gnome-44
       options: --privileged
@@ -75,44 +101,68 @@ jobs:
     - uses: actions/checkout@v4
     - uses: actions/download-artifact@master
       with:
-        name: artifacts
-        path: artifacts/
+        name: linux
+        path: .
     - name: unpack linux build
       run: |
         (
           cd flatpak
-          unzip ../artifacts/Open-Chakra-Toning-linux-x64.zip
+          unzip ../Open-Chakra-Toning-linux-x64.zip
         )
-    - name: flatpack - build
+    - name: flatpak build
       uses: flathub-infra/flatpak-github-actions/flatpak-builder@master
       with:
         bundle: Open-Chakra-Toning-linux.flatpak
         manifest-path: flatpak/eu.quelltext.open_chakra_toning.yml
-    - name: "find flatpak and add it to the artifacts"
-      run: |
-        mv Open-Chakra-Toning-linux.flatpak artifacts/
     - uses: actions/upload-artifact@v4
       with:
-        name: artifacts
-        path: artifacts/*
-        overwrite: true
+        name: flatpak
+        path: Open-Chakra-Toning-linux.flatpak
 
   deploy-github-release:
     # only deploy on tags, see https://stackoverflow.com/a/58478262/1320237
     if: startsWith(github.ref, 'refs/tags/v')
     needs:
-      - build
-      - flatpak
+      - build-web
+      - build-linux
+      - build-android
+      - build-flatpak
+      - test-flutter
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: retrieve build artifacts
-        uses: actions/download-artifact@master
+      - uses: actions/download-artifact@master
         with:
-          name: artifacts
+          name: linux
+          path: artifacts/
+      - uses: actions/download-artifact@master
+        with:
+          name: android
+          path: artifacts/
+      - uses: actions/download-artifact@master
+        with:
+          name: web
+          path: artifacts/
+      - uses: actions/download-artifact@master
+        with:
+          name: flatpak
           path: artifacts/
       - name: create release
         uses: ncipollo/release-action@v1 # see https://github.com/ncipollo/release-action
         with:
           allowUpdates: true
           artifacts: "artifacts/*"
+
+  deploy-github-pages:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs:
+    - test-flutter
+    steps:
+    - uses: actions/checkout@v4
+    - uses: subosito/flutter-action@v2
+    - uses: bluefireteam/flutter-gh-pages@v8
+      with:
+        baseHref: /open_chakra_toning/
+        customArgs: --source-maps
+  
