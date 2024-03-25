@@ -43,17 +43,17 @@ $SUDO flatpak uninstall -y eu.quelltext.open_chakra_toning || true
 
 #$builder --force-clean "$builddir" "$manifest"
 echo "(1) The following commands installs the app directly"
-#flatpak-builder --user --install --force-clean "$builddir" "$manifest"
+$builder --user --install --force-clean "$builddir" "$manifest" || true
 
 echo "(2) The following commands install the app according to the submission section"
 ## see https://docs.flathub.org/docs/for-app-authors/submission#before-submission
-$builder --force-clean --user --install --ccache --repo="$repo" --mirror-screenshots-url=https://dl.flathub.org/media/ "$builddir" "$manifest"
+$builder --force-clean --user --install --ccache --repo="$repo" --mirror-screenshots-url=https://dl.flathub.org/media/ "$builddir" "$manifest" || true
 
 echo "(3) The Following commands install the app through a repository"
-#$builder --repo="$repo" --force-clean "$builddir" "$manifest"
-#flatpak remote-delete --force "$reponame"
-#flatpak --user remote-add --no-gpg-verify "$reponame" "$repo"
-#flatpak --user install -y "$reponame" "$id"
+$builder --repo="$repo" --force-clean "$builddir" "$manifest" || true
+flatpak remote-delete --force "$reponame"
+flatpak --user remote-add --no-gpg-verify "$reponame" "$repo"
+flatpak --user install -y "$reponame" "$id"
 
 echo "Linter 1"
 ## see https://docs.flathub.org/docs/for-app-authors/submission/#before-submission
