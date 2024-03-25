@@ -51,7 +51,7 @@ $builder --force-clean --user --install --ccache --repo="$repo" --mirror-screens
 
 echo "(3) The Following commands install the app through a repository"
 $builder --repo="$repo" --force-clean "$builddir" "$manifest" || true
-flatpak remote-delete --force "$reponame"
+flatpak remote-delete --force "$reponame" || true
 flatpak --user remote-add --no-gpg-verify "$reponame" "$repo"
 flatpak --user install -y "$reponame" "$id"
 
