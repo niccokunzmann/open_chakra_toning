@@ -78,7 +78,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         name: web
-        path: Open-Chakra-Toning-linux-x64.zip
+        path: Open-Chakra-Toning-web.zip
 
   test-flutter:
     name: "Flutter Tests"
