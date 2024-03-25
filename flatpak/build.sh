@@ -39,7 +39,7 @@ flatpak install -y flathub org.freedesktop.Sdk//23.08
 echo "Uninstall the currently installed application"
 flatpak uninstall -y eu.quelltext.open_chakra_toning || true
 
-$builder --force-clean "$builddir" "$manifest"
+#$builder --force-clean "$builddir" "$manifest"
 echo "(1) The following commands installs the app directly"
 #flatpak-builder --user --install --force-clean "$builddir" "$manifest"
 
