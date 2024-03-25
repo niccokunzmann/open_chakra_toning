@@ -42,7 +42,7 @@ jobs:
             "$target"
           (
             cd build/linux/x64/release/
-            zip Open-Chakra-Toning-linux-x64.zip Open-Chakra-Toning
+            zip -r Open-Chakra-Toning-linux-x64.zip Open-Chakra-Toning
           )
           mv build/linux/x64/release/Open-Chakra-Toning-linux-x64.zip artifacts
       - name: build Android
@@ -56,7 +56,7 @@ jobs:
           (
             cd build
             mv web Open-Chakra-Toning
-            zip ../artifacts/Open-Chakra-Toning-web.zip Open-Chakra-Toning
+            zip -r ../artifacts/Open-Chakra-Toning-web.zip Open-Chakra-Toning
           )
       - uses: actions/upload-artifact@v4
         with:
