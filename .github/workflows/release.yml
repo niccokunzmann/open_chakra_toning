@@ -22,8 +22,8 @@ jobs:
       - name: flatpak - prepare environment
         run: |
           sudo rm -r /root
-          mkdir root
-          sudo ln -sT "`pwd`/root" /root
+          mkdir ../root
+          sudo ln -sT "`pwd`/../root" /root
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
       - run: flutter pub get
