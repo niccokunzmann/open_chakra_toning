@@ -87,7 +87,7 @@ jobs:
       uses: flathub-infra/flatpak-github-actions/flatpak-builder@master
       with:
         bundle: artifacts/Open-Chakra-Toning-linux-x64.flatpak
-        manifest-path: Open-Chakra-Toning/eu.quelltext.open_chakra_toning.yml
+        manifest-path: flatpak/eu.quelltext.open_chakra_toning.yml
         cache-key: flatpak-builder-${{ github.sha }}
     - uses: actions/upload-artifact@v4
       with:
