@@ -49,9 +49,11 @@ jobs:
           manifest="$id.yml"
           repo="repo"
           reponame="ci_repo"
-
-          flatpak --user run org.flatpak.Builder --force-clean --ccache --user --repo="$repo" \
-            --mirror-screenshots-url=https://dl.flathub.org/media/ "$builddir" "$manifest"
+          (
+            cd flatpak
+            flatpak --user run org.flatpak.Builder --force-clean --ccache --user --repo="$repo" \
+              --mirror-screenshots-url=https://dl.flathub.org/media/ "$builddir" "$manifest"
+          )
       - name: flatpak - install
         run: |
           flatpak --user remote-add --no-gpg-verify "$reponame" "$repo"
