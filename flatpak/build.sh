@@ -62,7 +62,7 @@ echo "(1) The following commands installs the app directly"
 
 echo "(2) The following commands install the app according to the submission section"
 ## see https://docs.flathub.org/docs/for-app-authors/submission#before-submission
-$builder --force-clean --install --user --ccache --repo="$repo" --mirror-screenshots-url=https://dl.flathub.org/media/ "$builddir" "$manifest"
+$builder --force-clean --install --sandbox --user --ccache --repo="$repo" --mirror-screenshots-url=https://dl.flathub.org/media/ "$builddir" "$manifest"
 
 echo "(3) The Following commands install the app through a repository"
 #$builder --repo="$repo" --force-clean "$builddir" "$manifest" || true
