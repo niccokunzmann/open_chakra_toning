@@ -33,9 +33,12 @@ jobs:
           target="build/linux/x64/release/Open-Chakra-Toning"
           mv build/linux/x64/release/bundle "$target"
           # add files for flatpak build
-          cp -r inside.sh eu.quelltext.open_chakra_toning.metainfo.xml \
-            eu.quelltext.open_chakra_toning.desktop \
-            open_chakra_toning.sh assets/img/icon \
+          cp -r \
+            flatpak/inside.sh \
+            flatpak/eu.quelltext.open_chakra_toning.metainfo.xml \
+            flatpak/eu.quelltext.open_chakra_toning.desktop \
+            flatpak/open_chakra_toning.sh \
+            assets/img/icon \
             "$target"
           (
             cd build/linux/x64/release/
