@@ -36,10 +36,26 @@ jobs:
             zip Open-Chakra-Toning-linux-x64.zip Open-Chakra-Toning
           )
           mv build/linux/x64/release/Open-Chakra-Toning-linux-x64.zip artifacts
-      - name: build flatpak
+      - name: flatpak - install dependencies
         run: |
-          sudo apt install -qq flatpak
-          flatpak/build.sh
+          sudo apt install -y -qq flatpak
+          sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+          sudo flatpak install -y flathub org.flatpak.Builder flathub org.freedesktop.Platform//23.08 \
+            flathub org.freedesktop.Sdk//23.08
+      - name: flatpak - build
+        run: |
+          builddir="../build/flatpak"
+          id="eu.quelltext.open_chakra_toning"
+          manifest="$id.yml"
+          repo="repo"
+          reponame="ci_repo"
+
+          flatpak run org.flatpak.Builder --force-clean --ccache --user --repo="$repo" \
+            --mirror-screenshots-url=https://dl.flathub.org/media/ "$builddir" "$manifest"
+          flatpak --user remote-add --no-gpg-verify "$reponame" "$repo"
+          flatpak --user install -y "$reponame" "$id"
+          flatpak/lint.sh
+
           mv build/eu.quelltext.open_chakra_toning.flatpak artifacts/
       - name: build Android
         run: |
