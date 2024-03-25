@@ -79,10 +79,9 @@ jobs:
         path: artifacts/
     - name: unpack linux build
       run: |
-        mkdir -p build/linux/x64/release
         (
           cd flatpak
-          unzip artifacts/Open-Chakra-Toning-linux-x64.zip
+          unzip ../artifacts/Open-Chakra-Toning-linux-x64.zip
         )
     - name: flatpack - build
       uses: flathub-infra/flatpak-github-actions/flatpak-builder@master
