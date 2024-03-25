@@ -52,7 +52,7 @@ if ! [ -e "../build/linux/x64/release/bundle" ]; then
     flutter build linux
   )
 fi
-cp -r ../build/linux/x64/release/bundle Open-Chakra-Toning
+cp -r ../build/linux/x64/release/bundle/* Open-Chakra-Toning/
 cp inside.sh eu.quelltext.open_chakra_toning.metainfo.xml eu.quelltext.open_chakra_toning.desktop open_chakra_toning.sh Open-Chakra-Toning
 cp -r ../assets/img/icon Open-Chakra-Toning
 
