@@ -86,13 +86,9 @@ jobs:
     - name: flatpack - build
       uses: flathub-infra/flatpak-github-actions/flatpak-builder@master
       with:
-        bundle: artifacts/Open-Chakra-Toning-linux-x64.flatpak
+        bundle: Open-Chakra-Toning-linux-x64.flatpak
         manifest-path: flatpak/eu.quelltext.open_chakra_toning.yml
         cache-key: flatpak-builder-${{ github.sha }}
-    - uses: actions/upload-artifact@v4
-      with:
-        name: artifacts
-        path: artifacts/Open-Chakra-Toning-linux-x64.flatpak
 
   deploy-github-release:
     # only deploy on tags, see https://stackoverflow.com/a/58478262/1320237
