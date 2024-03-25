@@ -31,7 +31,7 @@ jobs:
         run: |
           flutter build linux
           target="build/linux/x64/release/Open-Chakra-Toning"
-          mv build/linux/x64/release "$target"
+          mv build/linux/x64/release/bundle "$target"
           # add files for flatpak build
           cp -r inside.sh eu.quelltext.open_chakra_toning.metainfo.xml \
             eu.quelltext.open_chakra_toning.desktop \
