@@ -19,4 +19,4 @@
 # Run open_chakra_toning from the bundle directory
 #
 
-/app/bundle/open_chakra_toning
+/app/Open-Chakra-Toning/open_chakra_toning

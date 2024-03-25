@@ -19,11 +19,6 @@ jobs:
     steps:
       - name: update dependencies
         run: sudo apt update
-      - name: flatpak - prepare environment
-        run: |
-          sudo rm -r /root
-          mkdir ../root
-          sudo ln -sT "`pwd`/../root" /root
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
       - run: flutter pub get
@@ -35,38 +30,18 @@ jobs:
       - name: build Linux
         run: |
           flutter build linux
-          mv build/linux/x64/release/bundle/ build/linux/x64/release/Open-Chakra-Toning
+          target="build/linux/x64/release/Open-Chakra-Toning"
+          mv build/linux/x64/release "$target"
+          # add files for flatpak build
+          cp -r inside.sh eu.quelltext.open_chakra_toning.metainfo.xml \
+            eu.quelltext.open_chakra_toning.desktop \
+            open_chakra_toning.sh assets/img/icon \
+            "$target"
           (
             cd build/linux/x64/release/
             zip Open-Chakra-Toning-linux-x64.zip Open-Chakra-Toning
           )
           mv build/linux/x64/release/Open-Chakra-Toning-linux-x64.zip artifacts
-      - name: flatpak - install dependencies
-        run: |
-          sudo apt install -y -qq flatpak
-          sudo -i flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-          sudo -i flatpak install -y flathub org.flatpak.Builder
-          sudo -i flatpak --system install -y --noninteractive flathub org.freedesktop.Platform/x86_64/23.08
-          sudo -i flatpak --system install -y --noninteractive flathub org.freedesktop.Sdk/x86_64/23.08
-      - name: flatpak - build
-        run: |
-          id="eu.quelltext.open_chakra_toning"
-          builddir="`pwd`/build/flatpak"
-          manifest="`pwd`/flatpak/$id.yml"
-          repo="`pwd`/local_repo"
-          reponame="ci_repo"
-          sudo -i flatpak run org.flatpak.Builder --force-clean --ccache --repo="$repo" \
-            --install-deps-from=flathub \
-            --mirror-screenshots-url=https://dl.flathub.org/media/ "$builddir" "$manifest"
-      - name: flatpak - install
-        run: |
-          flatpak --user remote-add --no-gpg-verify "$reponame" "$repo"
-          flatpak --user install -y "$reponame" "$id"
-      - name: flatpak - lint
-        run: flatpak/lint.sh
-      - name: flatpak - artifact
-        run: |
-          flatpak build-bundle "$repo" "artifacts/$id.flatpak" "$id"
       - name: build Android
         run: |
           flutter build apk
@@ -85,11 +60,44 @@ jobs:
           name: artifacts
           path: artifacts/
 
+  flatpak:
+    name: "Flatpak"
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    container:
+      image: ghcr.io/flathub-infra/flatpak-github-actions:gnome-44
+      options: --privileged
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/download-artifact@master
+      with:
+        name: artifacts
+        path: artifacts/
+    - name: unpack linux build
+      run: |
+        mkdir -p build/linux/x64/release
+        (
+          cd flatpak
+          unzip artifacts/Open-Chakra-Toning-linux-x64.zip
+        )
+    - name: flatpack - build
+      uses: flathub-infra/flatpak-github-actions/flatpak-builder@master
+      with:
+        bundle: artifacts/Open-Chakra-Toning-linux-x64.flatpak
+        manifest-path: Open-Chakra-Toning/eu.quelltext.open_chakra_toning.yml
+        cache-key: flatpak-builder-${{ github.sha }}
+    - uses: actions/upload-artifact@v4
+      with:
+        name: artifacts
+        path: artifacts/Open-Chakra-Toning-linux-x64.flatpak
+
   deploy-github-release:
     # only deploy on tags, see https://stackoverflow.com/a/58478262/1320237
     if: startsWith(github.ref, 'refs/tags/v')
     needs:
       - build
+      - flatpak
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

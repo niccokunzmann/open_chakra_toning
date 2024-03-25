@@ -24,8 +24,9 @@ cd "`dirname \"$0\"`"
 
 echo Install the executable 
 
+mkdir -p /app/bin/
 install -D open_chakra_toning.sh /app/bin/open_chakra_toning
-mv ../build/linux/x64/release/bundle /app/bundle
+cp -r . /app/Open-Chakra-Toning
 
 echo Install metadata
 ## see https://docs.flatpak.org/en/latest/conventions.html#metainfo-files 
@@ -48,10 +49,10 @@ echo Install icons
 for resolution in 128 256 512; do
   dir="/app/share/icons/hicolor/${resolution}x${resolution}/apps/"
   mkdir -p "$dir"
-  cp ../assets/img/icon/icon-$resolution.png "$dir/eu.quelltext.open_chakra_toning.png"
+  cp icon/icon-$resolution.png "$dir/eu.quelltext.open_chakra_toning.png"
 done
 mkdir -p /app/share/icons/hicolor/scalable/apps/
-cp ../assets/img/icon/icon.svg /app/share/icons/hicolor/scalable/apps/eu.quelltext.open_chakra_toning.svg
+cp icon/icon.svg /app/share/icons/hicolor/scalable/apps/eu.quelltext.open_chakra_toning.svg
 
 
 echo Install done

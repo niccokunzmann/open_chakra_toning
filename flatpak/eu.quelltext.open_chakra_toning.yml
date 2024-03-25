@@ -22,10 +22,10 @@ modules:
   - name: open_chakra_toning
     buildsystem: simple
     build-commands:
-      - flatpak/inside.sh
+      - ./inside.sh
     sources:
       - type: dir
-        path: ..
+        path: Open-Chakra-Toning
 finish-args: # see https://docs.flatpak.org/en/latest/manifests.html#finishing
   # X11 + XShm access
   - --share=ipc

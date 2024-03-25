@@ -43,6 +43,19 @@ $SUDO flatpak install -y flathub org.flatpak.Builder flathub org.freedesktop.Pla
 echo "Uninstall the currently installed application"
 $SUDO flatpak uninstall -y eu.quelltext.open_chakra_toning || true
 
+echo "Create flatpak directory for the app"
+rm -rf Open-Chakra-Toning
+mkdir -p Open-Chakra-Toning
+if ! [ -e "../build/linux/x64/release/bundle" ]; then
+  (
+    cd ..
+    flutter build linux
+  )
+fi
+cp -r ../build/linux/x64/release/bundle Open-Chakra-Toning
+cp inside.sh eu.quelltext.open_chakra_toning.metainfo.xml eu.quelltext.open_chakra_toning.desktop open_chakra_toning.sh Open-Chakra-Toning
+cp -r ../assets/img/icon Open-Chakra-Toning
+
 #$builder --force-clean "$builddir" "$manifest"
 echo "(1) The following commands installs the app directly"
 #$builder --user --install --force-clean "$builddir" "$manifest" || true
