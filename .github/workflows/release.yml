@@ -90,8 +90,7 @@ jobs:
         manifest-path: flatpak/eu.quelltext.open_chakra_toning.yml
     - name: "find flatpak and add it to the artifacts"
       run: |
-        find | grep .flatpak
-        mv *.flatpak artifacts/
+        mv Open-Chakra-Toning-linux.flatpak artifacts/
     - uses: actions/upload-artifact@v4
       with:
         name: artifacts
