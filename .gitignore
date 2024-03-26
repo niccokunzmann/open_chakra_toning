@@ -45,3 +45,4 @@ app.*.map.json
 # cutom ignore
 open_chakra_toning.code-workspace
 .flatpak-builder
+Open-Chakra-Toning.msix

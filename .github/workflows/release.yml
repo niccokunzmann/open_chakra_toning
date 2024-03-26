@@ -120,6 +120,23 @@ jobs:
         name: flatpak
         path: Open-Chakra-Toning-linux.flatpak
 
+  build-windows:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: subosito/flutter-action@v2
+      with:
+        channel: 'stable'
+    - run: flutter pub get
+    - name: build
+      run: |
+        dart run msix:create
+        mv build\windows\x64\runner\Release\open_chakra_toning.msix Open-Chakra-Toning.msix
+    - uses: actions/upload-artifact@v4
+      with:
+        name: windows
+        path: Open-Chakra-Toning.msix
+
   deploy-github-release:
     # only deploy on tags, see https://stackoverflow.com/a/58478262/1320237
     if: startsWith(github.ref, 'refs/tags/v')
@@ -147,6 +164,10 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: flatpak
+          path: artifacts/
+      - uses: actions/download-artifact@master
+        with:
+          name: windows
           path: artifacts/
       - name: create release
         uses: ncipollo/release-action@v1 # see https://github.com/ncipollo/release-action
