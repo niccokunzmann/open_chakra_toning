@@ -70,6 +70,14 @@ cat ../pubspec.yaml | grep -qF "version: $version+$last"
 check "pubspec.yaml: Set version to \"$version+$last\"."
 
 #
+# Changelogs
+#
+for version_code in `seq $last`; do
+  test -f ../metadata/en/changelogs/$version_code.txt
+  check "Changes of version $version_code are documented in \"metadata/en/changelogs/$version_code.txt\"."
+done
+
+#
 # Set the exist status
 #
 echo "exit $EXIT"

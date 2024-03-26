@@ -1,0 +1,3 @@
+- Release msix file
+- Use mp3 as sound files
+- Add Privacy Policy
