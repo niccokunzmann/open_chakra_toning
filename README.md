@@ -59,11 +59,6 @@ In order to create a new release, please follow this procedure:
 
 This should release a new version.
 
-## Changelog
-
-- v1.0.0
-  - Create first version of the app
-
 [web]: https://niccokunzmann.github.io/open_chakra_toning/
 [gh-sponsors]: https://github.com/sponsors/niccokunzmann
 [actions]: https://github.com/niccokunzmann/open_chakra_toning/actions
