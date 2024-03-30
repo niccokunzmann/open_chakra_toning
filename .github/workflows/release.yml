@@ -189,7 +189,7 @@ jobs:
         path: artifacts/
     - uses: actions/download-artifact@master
       with:
-        name: windows
+        name: windows 
         path: artifacts/
     - name: create release
       uses: ncipollo/release-action@v1 # see https://github.com/ncipollo/release-action

@@ -67,6 +67,10 @@ class Chakra {
     return 500;
   }
 
+  int get iconHeightPx {
+    return 40;
+  }
+
   void playSoundWith(AudioPlayer player) {
     player.play(
       AssetSource(soundAssetPath),
@@ -173,7 +177,7 @@ class ChakraPictures {
       solarPlexus: SolarPlexus(
           position: Point(x: 250, y: 300), sound: "solfeggio-voice/528.mp3"),
       sacral: Sacral(
-          position: Point(x: 250, y: 354), sound: "solfeggio-voice/417.mp3"),
+          position: Point(x: 250, y: 365), sound: "solfeggio-voice/417.mp3"),
       root: Root(
           position: Point(x: 250, y: 415), sound: "solfeggio-voice/396.mp3"),
     );

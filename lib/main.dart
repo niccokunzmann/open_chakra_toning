@@ -87,8 +87,12 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   double get actualChakraMapHeight {
-    return min(
-        MediaQuery.of(context).size.height, MediaQuery.of(context).size.width);
+    return min(MediaQuery.of(context).size.height - toolbarHeight,
+        MediaQuery.of(context).size.width);
+  }
+
+  double get chakraMapScale {
+    return actualChakraMapHeight / currentlyPlayingChakra.mapHeightPx;
   }
 
   @override
@@ -102,34 +106,15 @@ class _MyHomePageState extends State<MyHomePage> {
             )),
         titleSpacing: 0,
         automaticallyImplyLeading: false,
+        toolbarHeight: toolbarHeight,
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(translate("app.title")),
         centerTitle: true,
       ),
       body: Center(
-        child: GestureDetector(
-          onTapDown: (details) {
-            setState(() {
-              Chakra chakra = chakras.findClosestTo(Point(
-                  x: details.localPosition.dx *
-                      currentlyPlayingChakra.mapHeightPx /
-                      actualChakraMapHeight,
-                  y: details.localPosition.dy *
-                      currentlyPlayingChakra.mapHeightPx /
-                      actualChakraMapHeight));
-              if (isPlaying && chakra == currentlyPlayingChakra) {
-                player.stop();
-              } else {
-                currentlyPlayingChakra = chakra;
-                currentlyPlayingChakra.playSoundWith(player);
-              }
-            });
-          },
-          child: SvgPicture.asset(currentlyPlayingChakra.mapAssetPath,
-              width: actualChakraMapHeight),
-        ),
+        child: getChakraMap(),
       ),
-      floatingActionButton: FloatingActionButton(
+      /* floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
             if (isPlaying) {
@@ -137,12 +122,66 @@ class _MyHomePageState extends State<MyHomePage> {
             } else {
               currentlyPlayingChakra.playSoundWith(player);
             }
-          });
+           });
         },
         tooltip:
             isPlaying ? translate("button.pause") : translate("button.play"),
         child: SvgPicture.asset(currentlyPlayingChakra.iconAssetPath),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ), // This trailing comma makes auto-formatting nicer for build methods.*/
     );
+  }
+
+  double get toolbarHeight => kToolbarHeight;
+
+  Widget getChakraMap() {
+    List<Widget> widgets = [
+      SvgPicture.asset(currentlyPlayingChakra.iconAssetPath,
+          height: actualChakraMapHeight),
+      SvgPicture.asset(currentlyPlayingChakra.mapAssetPath,
+          height: actualChakraMapHeight),
+    ];
+    for (var chakra in chakras.chakras) {
+      if (chakraIsPlaying(chakra)) {
+        int glowScale = 2;
+        widgets.add(Positioned(
+            top: (chakra.position.y - chakra.iconHeightPx / 2 * glowScale) *
+                chakraMapScale,
+            left: (chakra.position.x - chakra.iconHeightPx / 2 * glowScale) *
+                chakraMapScale,
+            child: SvgPicture.asset("assets/img/chakra-icons/glow.svg",
+                height: chakra.iconHeightPx * glowScale * chakraMapScale)));
+      }
+      widgets.add(getChakraButton(chakra));
+    }
+    return Stack(
+      alignment: Alignment.topLeft,
+      children: widgets,
+    );
+  }
+
+  bool chakraIsPlaying(Chakra chakra) =>
+      isPlaying && chakra == currentlyPlayingChakra;
+  Widget getChakraButton(Chakra chakra) {
+    SvgPicture svg = SvgPicture.asset(chakra.iconAssetPath,
+        height: chakra.iconHeightPx * chakraMapScale);
+    List<Widget> pictures = [
+      GestureDetector(
+          onTapDown: (details) {
+            setState(() {
+              if (chakraIsPlaying(chakra)) {
+                player.stop();
+              } else {
+                chakra.playSoundWith(player);
+              }
+              currentlyPlayingChakra = chakra;
+            });
+          },
+          child: svg)
+    ];
+    return Positioned(
+        // see https://stackoverflow.com/a/63337878/1320237
+        top: (chakra.position.y - chakra.iconHeightPx / 2) * chakraMapScale,
+        left: (chakra.position.x - chakra.iconHeightPx / 2) * chakraMapScale,
+        child: Stack(children: pictures));
   }
 }
