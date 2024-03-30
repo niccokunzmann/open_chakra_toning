@@ -84,7 +84,9 @@ class NoChakra extends Chakra {
   String get id => "no-chakra";
 
   @override
-  void playSoundWith(AudioPlayer player) {}
+  void playSoundWith(AudioPlayer player) {
+    player.stop();
+  }
 }
 
 class Root extends Chakra {

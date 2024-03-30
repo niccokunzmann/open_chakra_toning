@@ -76,14 +76,22 @@ class _MyHomePageState extends State<MyHomePage> {
   ChakraPicture chakras = ChakraPictures().getChakraPicture();
   final player = AudioPlayer();
   Chakra currentlyPlayingChakra = NoChakra();
+  bool isPlaying = false;
 
-  bool get isPlaying {
-    return player.state == PlayerState.playing ||
+  void updatePlayState() {
+    isPlaying = player.state == PlayerState.playing ||
         player.state == PlayerState.completed;
   }
 
   _MyHomePageState() {
     player.setReleaseMode(ReleaseMode.loop);
+    player.setPlayerMode(PlayerMode
+        .lowLatency); // see https://github.com/bluefireteam/audioplayers/blob/main/getting_started.md#player-mode
+    player.onPlayerStateChanged.listen((event) {
+      setState(() {
+        updatePlayState();
+      });
+    });
   }
 
   double get actualChakraMapHeight {
@@ -174,6 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 chakra.playSoundWith(player);
               }
               currentlyPlayingChakra = chakra;
+              updatePlayState();
             });
           },
           child: svg)
