@@ -21,14 +21,12 @@
  */
 
 import "package:flutter/material.dart";
-import "package:flutter/services.dart";
 import "package:flutter_about_page/flutter_about_page.dart";
 import "package:flutter_translate/flutter_translate.dart";
 import "package:open_chakra_toning/config.dart";
 import "package:open_chakra_toning/ui/widgets/app_bar.dart";
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class AboutTheApp extends StatelessWidget {
   @override
