@@ -145,6 +145,8 @@ class _MyHomePageState extends State<MyHomePage> {
     List<Widget> widgets = [
       SvgPicture.asset(currentlyPlayingChakra.iconAssetPath,
           height: actualChakraMapHeight),
+      SvgPicture.asset("assets/img/chakra-map/glow.svg",
+          height: actualChakraMapHeight),
       SvgPicture.asset(currentlyPlayingChakra.mapAssetPath,
           height: actualChakraMapHeight),
     ];
