@@ -21,15 +21,47 @@
  */
 
 import "package:flutter/material.dart";
+import "package:flutter/services.dart";
+import "package:flutter_about_page/flutter_about_page.dart";
+import "package:flutter_translate/flutter_translate.dart";
+import "package:open_chakra_toning/config.dart";
 import "package:open_chakra_toning/ui/widgets/app_bar.dart";
+import 'package:url_launcher/url_launcher.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-class AboutPage extends StatelessWidget {
+class AboutTheApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    AboutPage ab = AboutPage();
     return Scaffold(
-      appBar: AppBarBuilder.buildAppBar(context, [], back: true),
-      body: Text("test"),
-    );
+        appBar: AppBarBuilder.buildAppBar(context, [], back: true),
+        body: ListView(
+          children: [
+            Container(
+              height: 20,
+            ),
+            Image.asset(
+              "assets/img/icon/icon-256.png",
+              height: 120,
+            ),
+            Container(
+              height: 20,
+            ),
+            Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  translate("about.description"),
+                  textAlign: TextAlign.center,
+                )),
+            createLink("about.view-project", Config.viewProject,
+                FontAwesomeIcons.github),
+            createLink("about.report-issue", Config.reportIssues,
+                FontAwesomeIcons.github),
+            createLink("about.view-website", Config.viewWebsite,
+                FontAwesomeIcons.globe),
+          ],
+        ));
   }
 
   static AppMenuItem getMenuItem() {
@@ -37,8 +69,59 @@ class AboutPage extends StatelessWidget {
       // push the new page
       // see https://blog.logrocket.com/flutter-appbar-tutorial/
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return AboutPage();
+        return AboutTheApp();
       }));
     });
+  }
+
+  void _launchURL(Uri url) async {
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } /*else {
+      try {
+        Fluttertoast.showToast(
+            msg: "Could not open $url",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            textColor: Colors.white,
+            fontSize: 16.0);
+      } on MissingPluginException catch (error) {
+        print('MissingPluginException: $error');
+      }
+    }*/
+  }
+
+  createItemWidget(Widget image, String translationId) {
+    // copied from https://github.com/npsulav/flutter_about_page
+    // license: https://github.com/npsulav/flutter_about_page/blob/master/LICENSE
+    return Padding(
+      padding: const EdgeInsets.only(top: 15, right: 10, left: 10, bottom: 10),
+      child: Row(
+        children: [
+          image,
+          Padding(
+            padding: const EdgeInsets.only(left: 25.0, right: 10),
+            child: Text(
+              translate(translationId),
+              textAlign: TextAlign.justify,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget createLink(String translationKey, Uri url, IconData icon) {
+    return InkWell(
+        onTap: () {
+          _launchURL(url);
+        },
+        child: createItemWidget(
+            FaIcon(
+              icon,
+              color: Colors.black,
+            ),
+            translationKey));
   }
 }

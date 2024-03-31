@@ -57,7 +57,7 @@ class ChakraMapState extends State<MyHomePage> {
   }
 
   List<AppMenuItem> getMenuItems() {
-    return [AboutPage.getMenuItem()];
+    return [AboutTheApp.getMenuItem()];
   }
 
   @override
