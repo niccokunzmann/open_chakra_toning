@@ -120,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
       ),
       body: Center(
-        child: getChakraMap(),
+        child:se getChakraMap(),
       ),
       /* floatingActionButton: FloatingActionButton(
         onPressed: () {
