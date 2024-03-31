@@ -2,6 +2,9 @@
     "app" : {
         "title": "Open Chakra Toning"
     },
+    "menu": {
+        "about": "About"
+    },
     "chakra" : {
         "name": {
             "root": "Root Chakra",

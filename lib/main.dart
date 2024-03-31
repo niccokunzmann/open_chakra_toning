@@ -22,6 +22,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:open_chakra_toning/app_bar.dart';
 import 'chakras.dart';
 import 'package:audioplayers/audioplayers.dart';
 
@@ -106,19 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-            padding: EdgeInsets.only(left: 16.0),
-            child: SvgPicture.asset(
-              "assets/img/icon/icon.svg",
-            )),
-        titleSpacing: 0,
-        automaticallyImplyLeading: false,
-        toolbarHeight: toolbarHeight,
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(translate("app.title")),
-        centerTitle: true,
-      ),
+      appBar: AppBarBuilder.buildAppBar(context),
       body: Center(
         child: getChakraMap(),
       ),
@@ -139,7 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  double get toolbarHeight => kToolbarHeight;
+  double get toolbarHeight => AppBarBuilder.toolbarHeight;
 
   Widget getChakraMap() {
     List<Widget> widgets = [
