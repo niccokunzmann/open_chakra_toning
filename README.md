@@ -14,6 +14,17 @@ You might want to
 This is a flutter project. You can follow their [setup guide](https://docs.flutter.dev/get-started/install)
 and build the project.
 
+## Translations
+
+This app can be translated into your language.
+
+What to translate:
+
+- `assets/i18n/LANG.json`
+- `metadata/LANG/title.txt`
+- `metadata/LANG/short_description.txt`
+- `metadata/LANG/long_description.txt`
+
 ## Branches
 
 The [`main` branch](https://github.com/niccokunzmann/open_chakra_toning/tree/main) contains the source code to build the app.  

@@ -54,7 +54,7 @@ if ! [ -e "../build/linux/x64/release/bundle" ]; then
 fi
 cp -r ../build/linux/x64/release/bundle/* Open-Chakra-Toning/
 cp inside.sh eu.quelltext.open_chakra_toning.desktop open_chakra_toning.sh Open-Chakra-Toning
-./generate-metadata.sh > Open-Chakra-Toning/eu.quelltext.open_chakra_toning.metainfo.xml
+./generate-metainfo.sh > Open-Chakra-Toning/eu.quelltext.open_chakra_toning.metainfo.xml
 cp -r ../assets/img/icon Open-Chakra-Toning
 
 #$builder --force-clean "$builddir" "$manifest"

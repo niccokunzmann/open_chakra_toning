@@ -39,6 +39,15 @@
     <control>touch</control>
   </supports>
 
+  <!--
+    see https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-categories
+    see https://specifications.freedesktop.org/menu-spec/latest/apa.html
+  -->
+  <categories>
+      <category>Audio</category>
+      <category>Education</category>
+  </categories>
+
   <branding>
     <color type="primary" scheme_preference="light">#eeeeee</color>
     <color type="primary" scheme_preference="dark">#222222</color>
@@ -89,5 +98,5 @@
 
   <custom>
     <value key="flathub::manifest">https://github.com/flathub/eu.quelltext.open_chakra_toning/raw/master/eu.quelltext.open_chakra_toning.yml</value>
-   </custom>
+  </custom>
 </component>

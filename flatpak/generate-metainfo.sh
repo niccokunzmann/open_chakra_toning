@@ -34,15 +34,20 @@ cd "`dirname \"$0\"`"
             echo "xml:lang='$lang'"
         fi
     }
+    localize_description() {
+        local file="$1"
+        markdown_py "$file" | sed 's/^/        /g' | sed 's|<li>|<li '"`xml_lang`"'>|g' | sed 's|<p>|<p '"`xml_lang`"'>|g'
+    }
     #
     # generate the first output
     #
-    cat ./eu.quelltext.open_chakra_toning.template.metainfo.xml | grep -vF '</component>' | grep -vF '<summary>' | grep -vF '<name>'
+    cat ./eu.quelltext.open_chakra_toning.metainfo.xml | grep -vF '</component>' | grep -vF '<summary>' | grep -vF '<name>'
     #
     # Start safe mode
     #
     echo -n '  <!-- '
-    languages="`ls ../metadata/`"
+    languages="`ls ../metadata/ | tac | grep -vF default` default"
+
 
     #
     # Check dependencies
@@ -84,20 +89,20 @@ cd "`dirname \"$0\"`"
     #     </p>
     #   </description>
     out
+    out "  <description>"
     for lang in $languages; do
         file="../metadata/$lang/full_description.txt"
         if [ -f "$file" ]; then
-            out "  <description `xml_lang`>"
-            out "`markdown_py \"$file\" | sed 's/^/    /g'`"
-            out "  </description>"
+            out "`localize_description \"$file\"`"
         fi
     done
+    out "  </description>"
 
     #
     # Get all the tags
     #
     git fetch --tags || true
-    tags="`git tag | grep -E '^v'`"
+    tags="`git tag | grep -E '^v' | sort -Vr`"
 
     #
     # generate release for each tag
@@ -118,20 +123,20 @@ cd "`dirname \"$0\"`"
         versionCode="`echo $tag | grep -oE '[0-9]+$'`"
         echo "versionCode=$versionCode"
         out "    <release version='`echo $tag | tail -c+2`' date='`git log --pretty='%as' -1 \"$tag\"`'>"
-        out "      <url type="details">https://github.com/niccokunzmann/open_chakra_toning/releases/tag/$tag</url>"
-        default=../metadata/default/changelogs/$versionCode.txt
+        out "      <url type='details'>https://github.com/niccokunzmann/open_chakra_toning/releases/tag/$tag</url>"
+        default=../metadata/en/changelogs/$versionCode.txt
         if ! [ -f "$default" ]; then
             echo "Changelog not found! Expected: `pwd`/$default to be present!"
             exit 2
         fi
+        out "      <description>"
         for lang in $languages; do
             file="../metadata/$lang/changelogs/$versionCode.txt"
             if [ -f "$file" ]; then
-                out "      <description `xml_lang`>"
-                out "`markdown_py \"$file\" | sed 's/^/        /g'`"
-                out "      </description>"
+                out "`localize_description \"$file\"`"
             fi
         done
+        out "      </description>"
         out "    </release>"
     done
 
@@ -142,4 +147,4 @@ cd "`dirname \"$0\"`"
     #
     echo '  -->'
     echo '</component>'
-) | grep -vE '<!-- *-->' | tee eu.quelltext.open_chakra_toning.metainfo.xml
+) | grep -vE '<!-- *-->'
