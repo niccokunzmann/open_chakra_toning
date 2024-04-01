@@ -52,11 +52,11 @@ jobs:
         # add files for flatpak build
         cp -r \
           flatpak/inside.sh \
-          flatpak/eu.quelltext.open_chakra_toning.metainfo.xml \
           flatpak/eu.quelltext.open_chakra_toning.desktop \
           flatpak/open_chakra_toning.sh \
           assets/img/icon \
           "$target"
+        flatpak/generate-metainfo.sh | tee "$target/eu.quelltext.open_chakra_toning.metainfo.xml"
         (
           cd build/linux/x64/release/
           zip -r Open-Chakra-Toning-linux-x64.zip Open-Chakra-Toning
