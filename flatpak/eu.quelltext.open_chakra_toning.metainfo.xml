@@ -16,6 +16,10 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -->
+<!-- 
+  Flatpak metainfo app information.
+  See https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/
+-->
 <component type="desktop-application">
   <id>eu.quelltext.open_chakra_toning</id>
   
@@ -23,7 +27,7 @@
   <summary>Open your chakras with your voice</summary>
 
   <developer id="tld.vendor">
-    <name>Nicco Kunzmann</name>
+    <name >Nicco Kunzmann</name>
   </developer>
 
   <metadata_license>CC-BY-SA-4.0</metadata_license>
@@ -39,13 +43,6 @@
     <color type="primary" scheme_preference="light">#eeeeee</color>
     <color type="primary" scheme_preference="dark">#222222</color>
   </branding>
-  
-  <description>
-    <p>
-      Open your chakras with your voice. Choose between the different chakras and their frequencies. Meditate with guidance.
-    </p>
-  </description>
-
 
 <!--
   See https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#oars-information
@@ -90,19 +87,7 @@
     </screenshot>
   </screenshots>
 
-  <releases>
-    <release version="1.0.0" date="2024-03-24">
-      <url type="details">https://github.com/niccokunzmann/open_chakra_toning/blob/main/README.md#changelog</url>
-      <description>
-        <p>First version</p>
-        <ul>
-          <li>tones for chakras</li>
-        </ul>
-      </description>
-    </release>
-  </releases>
-
   <custom>
-    <value key="flathub::manifest">https://raw.githubusercontent.com/niccokunzmann/open_chakra_toning/main/flatpak/eu.quelltext.open_chakra_toning.yml</value>
+    <value key="flathub::manifest">https://github.com/flathub/eu.quelltext.open_chakra_toning/raw/master/eu.quelltext.open_chakra_toning.yml</value>
    </custom>
 </component>
