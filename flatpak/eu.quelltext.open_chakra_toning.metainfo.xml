@@ -67,11 +67,11 @@
   <url type="bugtracker">https://github.com/niccokunzmann/open_chakra_toning/issues</url>
   <url type="homepage">https://niccokunzmann.github.io/open_chakra_toning/</url>
   <url type="donation">https://github.com/niccokunzmann/open_chakra_toning/</url>
-  <url type="contact">https://github.com/niccokunzmann/open_chakra_toning/</url>
+  <url type="contact">https://github.com/niccokunzmann/open_chakra_toning/discussions/</url>
   <url type="faq">https://github.com/niccokunzmann/open_chakra_toning/</url>
   <url type="translate">https://github.com/niccokunzmann/open_chakra_toning/</url>
-  <url type="vcs-browser">https://github.com/niccokunzmann/open_chakra_toning/issues</url>
-  
+  <url type="vcs-browser">https://github.com/niccokunzmann/open_chakra_toning/</url>
+
   <launchable type="desktop-id">eu.quelltext.open_chakra_toning.desktop</launchable>
   <!--
     Screenshots

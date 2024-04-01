@@ -46,3 +46,4 @@ app.*.map.json
 open_chakra_toning.code-workspace
 .flatpak-builder
 Open-Chakra-Toning.msix
+eu.quelltext.open_chakra_toning
