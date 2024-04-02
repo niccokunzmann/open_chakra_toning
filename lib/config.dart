@@ -21,6 +21,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 class Config {
   static Uri viewProject =
       Uri.parse("https://github.com/niccokunzmann/open_chakra_toning");
+  static Uri viewPrivacyPolicy = Uri.parse(
+      "https://github.com/niccokunzmann/open_chakra_toning/blob/main/docs/privacy-policy.md#readme");
   static Uri viewWebsite =
       Uri.parse("https://niccokunzmann.github.io/open_chakra_toning/");
   static Uri viewAssets = Uri.parse(

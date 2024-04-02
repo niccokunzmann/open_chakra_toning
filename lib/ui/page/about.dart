@@ -82,7 +82,9 @@ class AboutTheApp extends StatelessWidget {
                       SvgPicture.asset("assets/img/license/sa.svg", height: 24)
                     ],
                   ),
-                  "about.license-content"))
+                  "about.license-content")),
+          createLink("about.view-privacy-policy", Config.viewPrivacyPolicy,
+              FontAwesomeIcons.userLock),
         ]));
   }
 
