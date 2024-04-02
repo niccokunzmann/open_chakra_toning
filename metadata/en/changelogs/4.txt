@@ -3,4 +3,4 @@
 - Clarify license of content
 - Link to Privacy Policy
 - Link to translation page
-
+- Link to app version tag
