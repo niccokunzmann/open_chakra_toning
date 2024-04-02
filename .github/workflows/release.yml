@@ -12,6 +12,11 @@ on:
   - cron: '14 7 * * 0'  # run once a week on Sunday
   workflow_dispatch:
 
+# Environment Variables
+# see https://docs.github.com/en/actions/learn-github-actions/variables#using-the-env-context-to-access-environment-variable-values
+env:
+  FLUTTER_VERSION: 3.19.5
+
 jobs:
   build-android:
     name: "Android Build"
@@ -21,6 +26,9 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         cache: true
+        # specify flutter version
+        # see https://github.com/subosito/flutter-action/tree/v2/#readme
+        flutter-version: ${{ env.FLUTTER_VERSION }}
     - run: flutter --version
     - name: build Android
       run: |
@@ -39,6 +47,9 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         cache: true
+        # specify flutter version
+        # see https://github.com/subosito/flutter-action/tree/v2/#readme
+        flutter-version: ${{ env.FLUTTER_VERSION }}
     - run: flutter --version
     - name: update dependencies
       run: sudo apt update
@@ -57,6 +68,7 @@ jobs:
           assets/img/icon \
           "$target"
         pip3 install --user markdown
+        flatpak/generate-metainfo.sh # output to check
         flatpak/generate-metainfo.sh | tee "$target/eu.quelltext.open_chakra_toning.metainfo.xml"
         (
           cd build/linux/x64/release/
@@ -76,6 +88,9 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         cache: true
+        # specify flutter version
+        # see https://github.com/subosito/flutter-action/tree/v2/#readme
+        flutter-version: ${{ env.FLUTTER_VERSION }}
     - run: flutter --version
     - name: build web
       run: |
@@ -98,6 +113,9 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         cache: true
+        # specify flutter version
+        # see https://github.com/subosito/flutter-action/tree/v2/#readme
+        flutter-version: ${{ env.FLUTTER_VERSION }}
     - run: flutter --version
     - run: flutter pub get
     - run: flutter test
@@ -148,6 +166,9 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         cache: true
+        # specify flutter version
+        # see https://github.com/subosito/flutter-action/tree/v2/#readme
+        flutter-version: ${{ env.FLUTTER_VERSION }}
     - run: flutter --version
     - run: flutter pub get
     - name: build
@@ -221,6 +242,9 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         cache: true
+        # specify flutter version
+        # see https://github.com/subosito/flutter-action/tree/v2/#readme
+        flutter-version: ${{ env.FLUTTER_VERSION }}
     - run: flutter --version
     - uses: bluefireteam/flutter-gh-pages@v8
       with:
