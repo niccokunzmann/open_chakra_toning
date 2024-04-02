@@ -21,8 +21,6 @@ import 'package:flutter_translate/flutter_translate.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:open_chakra_toning/ui/page/chakra_map.dart';
 
-import "package:flutter_about_page/flutter_about_page.dart";
-
 void main() async {
   var delegate = await LocalizationDelegate.create(
       fallbackLocale: 'en', supportedLocales: ['en']);
