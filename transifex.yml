@@ -20,3 +20,8 @@ filters:
   source_file: metadata/en/full_description.txt
   source_language: en
   translation_files_expression: 'metadata/<lang>/full_description.txt'
+- filter_type: file
+  file_format: KEYVALUEJSON
+  source_file: assets/i18n/en.json
+  source_language: en
+  translation_files_expression: 'assets/i18n/<lang>.json'
