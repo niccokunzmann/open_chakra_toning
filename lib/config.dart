@@ -23,6 +23,8 @@ class Config {
       Uri.parse("https://github.com/niccokunzmann/open_chakra_toning");
   static Uri viewWebsite =
       Uri.parse("https://niccokunzmann.github.io/open_chakra_toning/");
+  static Uri viewAssets = Uri.parse(
+      "https://github.com/niccokunzmann/open_chakra_toning/tree/main/assets");
   static Uri reportIssues =
       Uri.parse("https://github.com/niccokunzmann/open_chakra_toning/issues");
   // ignore: non_constant_identifier_names

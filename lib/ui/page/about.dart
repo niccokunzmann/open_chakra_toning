@@ -21,6 +21,7 @@
  */
 
 import "package:flutter/material.dart";
+import "package:flutter_svg/flutter_svg.dart";
 import 'package:package_info_plus/package_info_plus.dart';
 import "package:flutter_translate/flutter_translate.dart";
 import "package:open_chakra_toning/config.dart";
@@ -69,6 +70,19 @@ class AboutTheApp extends StatelessWidget {
                     color: Colors.black,
                   ),
                   "about.license")),
+          InkWell(
+              onTap: () {
+                _launchURL(Config.viewAssets);
+              },
+              child: createItemWidget(
+                  Row(
+                    children: [
+                      SvgPicture.asset("assets/img/license/cc.svg", height: 24),
+                      SvgPicture.asset("assets/img/license/by.svg", height: 24),
+                      SvgPicture.asset("assets/img/license/sa.svg", height: 24)
+                    ],
+                  ),
+                  "about.license-content"))
         ]));
   }
 
