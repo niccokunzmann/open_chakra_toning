@@ -4,6 +4,8 @@
 
 Open your chakras by singing to their frequencies.
 
+[![Get it on Flathub](https://flathub.org/api/badge?locale=en)](https://flathub.org/apps/eu.quelltext.open_chakra_toning)
+
 You might want to
 
 - **[Try it out!][web]**
