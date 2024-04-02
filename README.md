@@ -10,6 +10,7 @@ You might want to
 
 - **[Try it out!][web]**
 - [Donate using GitHub Sponsors][gh-sponsors]
+- [Translate the App][translate]
 
 ## Setup
 
@@ -74,3 +75,4 @@ This should release a new version.
 [web]: https://niccokunzmann.github.io/open_chakra_toning/
 [gh-sponsors]: https://github.com/sponsors/niccokunzmann
 [actions]: https://github.com/niccokunzmann/open_chakra_toning/actions
+[translate]: https://app.transifex.com/mundraub-android/open-chakra-toning/dashboard/

@@ -69,7 +69,7 @@
   <url type="donation">https://github.com/niccokunzmann/open_chakra_toning/</url>
   <url type="contact">https://github.com/niccokunzmann/open_chakra_toning/discussions/</url>
   <url type="faq">https://github.com/niccokunzmann/open_chakra_toning/</url>
-  <url type="translate">https://github.com/niccokunzmann/open_chakra_toning/</url>
+  <url type="translate">https://app.transifex.com/mundraub-android/open-chakra-toning/dashboard/</url>
   <url type="vcs-browser">https://github.com/niccokunzmann/open_chakra_toning/</url>
 
   <launchable type="desktop-id">eu.quelltext.open_chakra_toning.desktop</launchable>

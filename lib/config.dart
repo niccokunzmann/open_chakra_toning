@@ -29,6 +29,8 @@ class Config {
       "https://github.com/niccokunzmann/open_chakra_toning/tree/main/assets");
   static Uri reportIssues =
       Uri.parse("https://github.com/niccokunzmann/open_chakra_toning/issues");
+  static Uri viewTranslations = Uri.parse(
+      "https://app.transifex.com/mundraub-android/open-chakra-toning/dashboard/");
   // ignore: non_constant_identifier_names
   static String SVGIcon = "assets/img/icon/icon.svg";
   static SvgPicture getSVGIcon({double? height}) {

@@ -38,6 +38,7 @@
         "view-website": "View the website",
         "license": "View the license of the source code",
         "license-content": "View the license of the content",
-        "view-privacy-policy": "Privacy Policy"
+        "view-privacy-policy": "Privacy Policy",
+        "translate": "Translate the app"
     }
 }

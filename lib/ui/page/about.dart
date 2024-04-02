@@ -52,6 +52,8 @@ class AboutTheApp extends StatelessWidget {
               FontAwesomeIcons.github),
           createLink("about.report-issue", Config.reportIssues,
               FontAwesomeIcons.github),
+          createLink("about.translate", Config.viewTranslations,
+              FontAwesomeIcons.language),
           createLink(
               "about.view-website", Config.viewWebsite, FontAwesomeIcons.globe),
           InkWell(
