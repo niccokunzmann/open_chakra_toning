@@ -30,6 +30,7 @@ jobs:
         # see https://github.com/subosito/flutter-action/tree/v2/#readme
         flutter-version: ${{ env.FLUTTER_VERSION }}
     - run: flutter --version
+    - run: java --version
     - name: build Android
       run: |
         flutter build apk
