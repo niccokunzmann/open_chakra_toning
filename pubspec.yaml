@@ -54,15 +54,9 @@ dependencies:
     sdk: flutter
   flutter_svg:
   audioplayers:
-  cupertino_icons: ^1.0.6
   path: ^1.9.0
-  flutter_about_page:
-    git:
-      url: https://github.com/npsulav/flutter_about_page.git
-      ref: master # branch name
   font_awesome_flutter: ^10.7.0
   url_launcher: ^6.2.5
-  fluttertoast: ^8.2.4
   package_info_plus: ^6.0.0
 
 dev_dependencies:
