@@ -49,8 +49,8 @@
   </categories>
 
   <branding>
-    <color type="primary" scheme_preference="light">#eeeeee</color>
-    <color type="primary" scheme_preference="dark">#222222</color>
+    <color type="primary" scheme_preference="light">#fffcb2</color>
+    <color type="primary" scheme_preference="dark">#702a91</color>
   </branding>
 
 <!--
