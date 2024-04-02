@@ -1,0 +1,9 @@
+#
+# Transifex translation
+#
+filters:
+- filter_type: file
+  file_format: TXT
+  source_file: metadata/en/title.txt
+  source_language: en
+  translation_files_expression: 'metadata/<lang>/title.txt'
