@@ -35,7 +35,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 # Always increase the last number and also use this form:
 # X.Y.Z+Z
-version: 1.0.3+3
+version: 1.0.4+3
 
 environment:
   sdk: '>=3.3.0 <4.0.0'
@@ -142,8 +142,8 @@ flutter_launcher_icons:
   web:
     generate: true
     image_path: "assets/img/icon/icon-512.png"
-    background_color: "#222222"
-    theme_color: "#222222"
+    background_color: "#702a91"
+    theme_color: "#fffcb2"
   windows:
     generate: true
     image_path: "assets/img/icon/icon-512.png"
@@ -162,7 +162,7 @@ msix_config:
   display_name: Open Chakra Toning
   publisher_display_name: Nicco Kunzmann
   identity_name: NiccoKunzmann.OpenChakraToning
-  msix_version: 1.0.3.0
+  msix_version: 1.0.4.0
   logo_path: "assets/img/icon/icon-512.png"
   # for capabilities look at https://learn.microsoft.com/en-us/windows/uwp/packaging/app-capability-declarations
   capabilities: 
