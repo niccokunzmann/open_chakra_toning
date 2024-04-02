@@ -35,6 +35,7 @@
         "description": "Open your chakras by singing to their frequencies and meditating",
         "view-project": "View the project page",
         "report-issue": "Report an issue",
-        "view-website": "View the website"
+        "view-website": "View the website",
+        "license": "View the license"
     }
 }

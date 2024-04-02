@@ -16,6 +16,8 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import 'package:flutter_svg/flutter_svg.dart';
+
 class Config {
   static Uri viewProject =
       Uri.parse("https://github.com/niccokunzmann/open_chakra_toning");
@@ -23,4 +25,9 @@ class Config {
       Uri.parse("https://niccokunzmann.github.io/open_chakra_toning/");
   static Uri reportIssues =
       Uri.parse("https://github.com/niccokunzmann/open_chakra_toning/issues");
+  // ignore: non_constant_identifier_names
+  static String SVGIcon = "assets/img/icon/icon.svg";
+  static SvgPicture getSVGIcon({double? height}) {
+    return SvgPicture.asset(SVGIcon, height: height);
+  }
 }

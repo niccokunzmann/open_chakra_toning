@@ -17,6 +17,7 @@
 */
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:open_chakra_toning/config.dart';
 import 'package:open_chakra_toning/ui/widgets/translated_text.dart';
 
 class AppMenuItem {
@@ -39,11 +40,7 @@ class AppBarBuilder {
     if (menuItems.isNotEmpty) {
       actions.add(getMenuButton(context, menuItems));
     }
-    Widget icon = back
-        ? BackButton()
-        : SvgPicture.asset(
-            "assets/img/icon/icon.svg",
-          );
+    Widget icon = back ? BackButton() : Config.getSVGIcon();
     return AppBar(
         leading: Padding(padding: EdgeInsets.only(left: 16.0), child: icon),
         titleSpacing: 0,

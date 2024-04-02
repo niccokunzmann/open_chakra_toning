@@ -21,7 +21,7 @@
  */
 
 import "package:flutter/material.dart";
-import "package:flutter_about_page/flutter_about_page.dart";
+import 'package:package_info_plus/package_info_plus.dart';
 import "package:flutter_translate/flutter_translate.dart";
 import "package:open_chakra_toning/config.dart";
 import "package:open_chakra_toning/ui/widgets/app_bar.dart";
@@ -31,35 +31,45 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class AboutTheApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    AboutPage ab = AboutPage();
     return Scaffold(
         appBar: AppBarBuilder.buildAppBar(context, [], back: true),
-        body: ListView(
-          children: [
-            Container(
-              height: 20,
-            ),
-            Image.asset(
-              "assets/img/icon/icon-256.png",
-              height: 120,
-            ),
-            Container(
-              height: 20,
-            ),
-            Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  translate("about.description"),
-                  textAlign: TextAlign.center,
-                )),
-            createLink("about.view-project", Config.viewProject,
-                FontAwesomeIcons.github),
-            createLink("about.report-issue", Config.reportIssues,
-                FontAwesomeIcons.github),
-            createLink("about.view-website", Config.viewWebsite,
-                FontAwesomeIcons.globe),
-          ],
-        ));
+        body: ListView(children: [
+          Container(
+            height: 20,
+          ),
+          Config.getSVGIcon(height: 120),
+          Container(
+            height: 20,
+          ),
+          Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                translate("about.description"),
+                textAlign: TextAlign.center,
+              )),
+          createLink("about.view-project", Config.viewProject,
+              FontAwesomeIcons.github),
+          createLink("about.report-issue", Config.reportIssues,
+              FontAwesomeIcons.github),
+          createLink(
+              "about.view-website", Config.viewWebsite, FontAwesomeIcons.globe),
+          InkWell(
+              onTap: () async {
+                PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+                showLicensePage(
+                    // ignore: use_build_context_synchronously
+                    context: context,
+                    applicationIcon: Config.getSVGIcon(height: 120),
+                    applicationVersion: packageInfo.version);
+              },
+              child: createItemWidget(
+                  FaIcon(
+                    FontAwesomeIcons.fileCircleCheck,
+                    color: Colors.black,
+                  ),
+                  "about.license")),
+        ]));
   }
 
   static AppMenuItem getMenuItem() {
