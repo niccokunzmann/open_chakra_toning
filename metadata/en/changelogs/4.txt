@@ -1,3 +1,5 @@
 - Resize flatpak launcher icons
 - Change flathub background
+- Clarify license of content
+- Link to Privacy Policy
 
