@@ -36,4 +36,9 @@ class Config {
   static SvgPicture getSVGIcon({double? height}) {
     return SvgPicture.asset(SVGIcon, height: height);
   }
+
+  static Uri getVersionUrl(String version) {
+    return Uri.parse(
+        "https://github.com/niccokunzmann/open_chakra_toning/releases/tag/v$version");
+  }
 }

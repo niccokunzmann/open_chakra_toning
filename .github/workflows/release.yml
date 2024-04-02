@@ -54,6 +54,7 @@ jobs:
           flatpak/open_chakra_toning.sh \
           assets/img/icon \
           "$target"
+        pip3 install --user markdown
         flatpak/generate-metainfo.sh | tee "$target/eu.quelltext.open_chakra_toning.metainfo.xml"
         (
           cd build/linux/x64/release/

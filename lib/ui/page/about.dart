@@ -59,6 +59,17 @@ class AboutTheApp extends StatelessWidget {
           InkWell(
               onTap: () async {
                 PackageInfo packageInfo = await PackageInfo.fromPlatform();
+                _launchURL(Config.getVersionUrl(packageInfo.version));
+              },
+              child: createItemWidget(
+                  FaIcon(
+                    FontAwesomeIcons.github,
+                    color: Colors.black,
+                  ),
+                  "about.version")),
+          InkWell(
+              onTap: () async {
+                PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
                 showLicensePage(
                     // ignore: use_build_context_synchronously
