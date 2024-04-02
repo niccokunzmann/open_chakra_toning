@@ -21,6 +21,7 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         cache: true
+    - run: flutter --version
     - name: build Android
       run: |
         flutter build apk
@@ -38,6 +39,7 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         cache: true
+    - run: flutter --version
     - name: update dependencies
       run: sudo apt update
     - name: install depenencies
@@ -74,6 +76,7 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         cache: true
+    - run: flutter --version
     - name: build web
       run: |
         flutter build web
@@ -95,6 +98,7 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         cache: true
+    - run: flutter --version
     - run: flutter pub get
     - run: flutter test
 
@@ -144,6 +148,7 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         cache: true
+    - run: flutter --version
     - run: flutter pub get
     - name: build
       run: |
@@ -216,6 +221,7 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         cache: true
+    - run: flutter --version
     - uses: bluefireteam/flutter-gh-pages@v8
       with:
         baseHref: /
