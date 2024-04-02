@@ -1,0 +1,3 @@
+- Resize flatpak launcher icons
+- Change flathub background
+
