@@ -1,0 +1,40 @@
+{
+    "app" : {
+        "title": "Apri Chakra Toning"
+    },
+    "menu": {
+        "about": "Informazioni"
+    },
+    "chakra" : {
+        "name": {
+            "root": "Chakra della radice",
+            "sacral": "Chakra sacrale",
+            "solarplexus": "Chakra del plesso solare",
+            "heart": "Chakra del cuore",
+            "throat": "Chakra della gola",
+            "thirdeye": "Chakra del terzo occhio",
+            "crown": "Chakra della corona",
+            "nochakra": "Nessun Chakra"
+        },
+        "description": {
+            "root": "Il Chakra della radice si forma nell'utero e nell'infanzia e rappresenta la sicurezza. Metti la mano sul perinio o sulla parte più bassa della schiena.",
+            "sacral": "Il Chakra sacrale si forma durante l'infanzia. Rappresenta i sentimenti - vale a dire la vergogna e il senso di colpa - e la sessualità. Metti la mano sull'addome, circa un pollice sotto l'ombelico.",
+            "solarplexus": "Il Chakra del plesso solare si forma durante l'infanzia. È il centro dell’empowerment personale e della spinta a fare qualcosa. Funziona a stretto contatto con il Chakra della gola. Metti la mano tra lo sterno (costole) e l'ombelico.",
+            "heart": "Nel Chakra del Cuore navighiamo tra fiducia e tradimento. Metti la mano sul cuore per sentire il battito.",
+            "throat": "Il Chakra della Gola è il centro di espressione di tutto ciò che siamo: il nostro potere personale, pensieri, desideri e bisogni. Metti la mano sulla gola.",
+            "thirdeye": "Il Chakra del terzo occhio è il nostro centro intuitivo. Funziona a stretto contatto con il Chakra sacrale, ad es. sentimenti viscerali. Nonostante ciò, possiamo vedere l'invisibile. Imparare a fidarci del nostro terzo occhio ci dà la direzione.",
+            "crown": "Il Chakra della corona si sviluppa durante tutta la nostra età adulta fino alla morte. Comprende la nostra connessione con il divino, la mente e i nostri processi mentali. Metti la mano sopra o sopra la testa.",
+            "nochakra": ""
+        }
+    },
+    "button": {
+        "play": "Avvia",
+        "pause": "Pausa"    
+    },
+    "about": {
+        "description": "Apri i tuoi chakra cantando alle loro frequenze e meditando",
+        "view-project": "Visualizza la pagina del progetto",
+        "report-issue": "Segnala un problema",
+        "view-website": "Visualizza il sito web"
+    }
+}
