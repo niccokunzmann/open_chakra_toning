@@ -35,7 +35,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 # Always increase the last number and also use this form:
 # X.Y.Z+Z
-version: 1.0.4+3
+version: 1.0.4+4
 
 environment:
   sdk: '>=3.3.0 <4.0.0'
