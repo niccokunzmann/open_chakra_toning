@@ -10,7 +10,7 @@ You might want to
 
 - **[Try it out!][web]**
 - [Donate using GitHub Sponsors][gh-sponsors]
-- [Translate the App][translate]
+- [Translate the App][translate] (or request your language)
 
 ## Setup
 
