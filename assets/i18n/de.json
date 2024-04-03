@@ -1,0 +1,45 @@
+{
+    "app" : {
+        "title": "Töne Öffnen Chakras"
+    },
+    "menu": {
+        "about": "Über die App"
+    },
+    "chakra" : {
+        "name": {
+            "root": "Wurzelchakra",
+            "sacral": "Sacral Chakra",
+            "solarplexus": "Solar Plexus Chakra",
+            "heart": "Herzchakra",
+            "throat": "Throat Chakra",
+            "thirdeye": "Third eye Chakra",
+            "crown": "Crown Chakra",
+            "nochakra": "No Chakra"
+        },
+        "description": {
+            "root": "The Root Chakra is formed in the utero and infancy and represents safety. Place your hand on the perinium or lowest part of your back.",
+            "sacral": "The Sacral Chakra is formed in toddlerhood. It represents feelings - namely shame and guilt - and sexuality. Place your hand on the abdomen, about an inch below your belly button.",
+            "solarplexus": "The Solar Plexus Chakra is formed in childhood. It is the center for personal empowerment and the drive to do something. It works closely with the Throat Chakra. Place your hand between sternum (ribs) and belly button.",
+            "heart": "In the Heart Chakra we navigate trust and betrayal. Place your hand on your heart to feel the beat.",
+            "throat": "The Throat Chakra is the center of expression of all that we are: our personal power, thoughts, desires and needs. Place your hand over your thoat.",
+            "thirdeye": "The Third Eye Chakra is our intuitive center. It works closely with the Sacral Chakra though e.g. gut feelings. Though it, we can see the unseen. Learning to trust our Third Eye gives us direction.",
+            "crown": "The Crown Chakra develops during our entire adulthood until we die. It encompasses our connection to the divine, the mind and our thought processes. Place your hand on or above your head.",
+            "nochakra": ""
+        }
+    },
+    "button": {
+        "play": "Abspielen",
+        "pause": "Pause"    
+    },
+    "about": {
+        "description": "Öffne deine Chakras durch deinen Gesang zu ihren Frequenzen und Meditation",
+        "view-project": "Sieh die Projektseite an",
+        "report-issue": "Report an issue or request a feature",
+        "view-website": "Sieh die Webseite an",
+        "license": "Sieh die Lizenz des Quelltextes an",
+        "license-content": "Sieh die Lizenz der Inhalte an",
+        "view-privacy-policy": "Datenschutzerklärung",
+        "translate": "Übersetze die App",
+        "version": "Sieh den Quelltext dieser Version an"
+    }
+}
