@@ -8,13 +8,13 @@
     "chakra" : {
         "name": {
             "root": "Wurzelchakra",
-            "sacral": "Sacral Chakra",
-            "solarplexus": "Solar Plexus Chakra",
+            "sacral": "Sakralchakra",
+            "solarplexus": "Nabelchakra",
             "heart": "Herzchakra",
-            "throat": "Throat Chakra",
-            "thirdeye": "Third eye Chakra",
-            "crown": "Crown Chakra",
-            "nochakra": "No Chakra"
+            "throat": "Kehlchakra",
+            "thirdeye": "Stirnchakra",
+            "crown": "Kronenchakra",
+            "nochakra": "Kein Chakra"
         },
         "description": {
             "root": "The Root Chakra is formed in the utero and infancy and represents safety. Place your hand on the perinium or lowest part of your back.",
@@ -34,7 +34,7 @@
     "about": {
         "description": "Öffne deine Chakras durch deinen Gesang zu ihren Frequenzen und Meditation",
         "view-project": "Sieh die Projektseite an",
-        "report-issue": "Report an issue or request a feature",
+        "report-issue": "Melde ein Problem oder bitte um neue Funktionen",
         "view-website": "Sieh die Webseite an",
         "license": "Sieh die Lizenz des Quelltextes an",
         "license-content": "Sieh die Lizenz der Inhalte an",
