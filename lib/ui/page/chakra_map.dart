@@ -20,7 +20,9 @@ import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:open_chakra_toning/ui/page/about.dart';
+import 'package:open_chakra_toning/ui/page/chakra.dart';
 import 'package:open_chakra_toning/ui/widgets/app_bar.dart';
 import 'package:open_chakra_toning/model/chakras.dart';
 import 'package:open_chakra_toning/main.dart';
@@ -62,26 +64,24 @@ class ChakraMapState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Widget? button = currentlyPlayingChakra.hasAboutPage()
+        ? FloatingActionButton(
+            onPressed: () {
+              // push the new page
+              // see https://blog.logrocket.com/flutter-appbar-tutorial/
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return ChakraView(currentlyPlayingChakra);
+              }));
+            },
+            tooltip: translate("chakra-map.action-button"),
+            child: SvgPicture.asset(currentlyPlayingChakra.iconAssetPath))
+        : null;
     return Scaffold(
-      appBar: AppBarBuilder.buildAppBar(context, getMenuItems()),
-      body: Center(
-        child: getChakraMap(),
-      ),
-      /* floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            if (isPlaying) {
-              player.pause();
-            } else {
-              currentlyPlayingChakra.playSoundWith(player);
-            }
-           });
-        },
-        tooltip:
-            isPlaying ? translate("button.pause") : translate("button.play"),
-        child: SvgPicture.asset(currentlyPlayingChakra.iconAssetPath),
-      ), // This trailing comma makes auto-formatting nicer for build methods.*/
-    );
+        appBar: AppBarBuilder.buildAppBar(context, getMenuItems()),
+        body: Center(
+          child: getChakraMap(),
+        ),
+        floatingActionButton: button);
   }
 
   double get toolbarHeight => AppBarBuilder.toolbarHeight;

@@ -41,5 +41,8 @@
         "view-privacy-policy": "Privacy Policy",
         "translate": "Translate the app",
         "version": "View the source code of this version"
+    },
+    "chakra-map": {
+        "action-button": "Explore the chakra"
     }
 }

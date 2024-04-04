@@ -76,12 +76,20 @@ class Chakra {
       AssetSource(soundAssetPath),
     );
   }
+
+  bool hasAboutPage() {
+    return true;
+  }
 }
 
 class NoChakra extends Chakra {
   NoChakra() : super(position: Point(x: 0, y: 0), sound: "");
   @override
   String get id => "no-chakra";
+  @override
+  bool hasAboutPage() {
+    return false;
+  }
 
   @override
   void playSoundWith(AudioPlayer player) {
