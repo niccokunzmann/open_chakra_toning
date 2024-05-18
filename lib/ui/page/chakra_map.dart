@@ -74,7 +74,7 @@ class ChakraMapState extends State<MyHomePage> {
               }));
             },
             tooltip: translate("chakra-map.action-button"),
-            child: SvgPicture.asset(currentlyPlayingChakra.iconAssetPath))
+            child: currentlyPlayingChakra.iconSVG())
         : null;
     return Scaffold(
         appBar: AppBarBuilder.buildAppBar(context, getMenuItems()),
@@ -88,12 +88,9 @@ class ChakraMapState extends State<MyHomePage> {
 
   Widget getChakraMap() {
     List<Widget> widgets = [
-      SvgPicture.asset(currentlyPlayingChakra.iconAssetPath,
-          height: actualChakraMapHeight),
-      SvgPicture.asset("assets/img/chakra-map/glow.svg",
-          height: actualChakraMapHeight),
-      SvgPicture.asset(currentlyPlayingChakra.mapAssetPath,
-          height: actualChakraMapHeight),
+      currentlyPlayingChakra.iconSVG(height: actualChakraMapHeight),
+      currentlyPlayingChakra.mapGlowSVG(height: actualChakraMapHeight),
+      currentlyPlayingChakra.mapSVG(height: actualChakraMapHeight),
     ];
     for (var chakra in chakras.chakras) {
       if (chakraIsPlaying(chakra)) {
@@ -103,7 +100,7 @@ class ChakraMapState extends State<MyHomePage> {
                 chakraMapScale,
             left: (chakra.position.x - chakra.iconHeightPx / 2 * glowScale) *
                 chakraMapScale,
-            child: SvgPicture.asset("assets/img/chakra-icons/glow.svg",
+            child: chakra.glowSVG(
                 height: chakra.iconHeightPx * glowScale * chakraMapScale)));
       }
       widgets.add(getChakraButton(chakra));

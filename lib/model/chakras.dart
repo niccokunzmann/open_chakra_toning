@@ -18,6 +18,7 @@
 
 import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 
 class Point {
@@ -59,8 +60,16 @@ class Chakra {
     return "assets/img/chakra-icons/$id.svg";
   }
 
+  SvgPicture iconSVG({double? height}) {
+    return SvgPicture.asset(iconAssetPath, height: height);
+  }
+
   String get mapAssetPath {
     return "assets/img/chakra-map/$id.svg";
+  }
+
+  SvgPicture mapSVG({double? height}) {
+    return SvgPicture.asset(mapAssetPath, height: height);
   }
 
   int get mapHeightPx {
@@ -79,6 +88,14 @@ class Chakra {
 
   bool hasAboutPage() {
     return true;
+  }
+
+  SvgPicture glowSVG({double? height}) {
+    return SvgPicture.asset("assets/img/chakra-icons/glow.svg", height: height);
+  }
+
+  SvgPicture mapGlowSVG({double? height}) {
+    return SvgPicture.asset("assets/img/chakra-map/glow.svg", height: height);
   }
 }
 

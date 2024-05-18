@@ -31,7 +31,10 @@ class ChakraView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBarBuilder.buildAppBar(context, [], back: true),
-        body: SvgPicture.asset(chakra.iconAssetPath));
+        appBar: buildAppBar(context), body: Center(child: chakra.iconSVG()));
+  }
+
+  AppBar buildAppBar(BuildContext context) {
+    return AppBarBuilder.buildAppBar(context, [], back: true);
   }
 }
