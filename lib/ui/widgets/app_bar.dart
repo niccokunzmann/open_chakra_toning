@@ -16,7 +16,6 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:open_chakra_toning/config.dart';
 import 'package:open_chakra_toning/ui/widgets/translated_text.dart';
 
@@ -35,7 +34,7 @@ class AppBarBuilder {
   static double get toolbarHeight => kToolbarHeight;
 
   static AppBar buildAppBar(BuildContext context, List<AppMenuItem> menuItems,
-      {bool back = false}) {
+      {bool back = false, Widget? title}) {
     List<Widget> actions = [];
     if (menuItems.isNotEmpty) {
       actions.add(getMenuButton(context, menuItems));
@@ -47,7 +46,7 @@ class AppBarBuilder {
         // automaticallyImplyLeading: false,
         toolbarHeight: toolbarHeight,
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: TranslatedText("app.title"),
+        title: title ?? TranslatedText("app.title"),
         centerTitle: true,
         actions: actions);
   }

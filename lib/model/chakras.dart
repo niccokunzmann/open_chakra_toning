@@ -35,8 +35,10 @@ class Point {
 class Chakra {
   Point position;
   String sound;
+  double frequency;
 
-  Chakra({required this.position, required this.sound});
+  Chakra(
+      {required this.position, required this.sound, required this.frequency});
 
   String get id => "chakra";
 
@@ -48,7 +50,7 @@ class Chakra {
     return "sound/$sound";
   }
 
-  String name() {
+  String get name {
     return translate("chakra.name.$id");
   }
 
@@ -100,7 +102,7 @@ class Chakra {
 }
 
 class NoChakra extends Chakra {
-  NoChakra() : super(position: Point(x: 0, y: 0), sound: "");
+  NoChakra() : super(position: Point(x: 0, y: 0), sound: "", frequency: 0);
   @override
   String get id => "no-chakra";
   @override
@@ -115,43 +117,49 @@ class NoChakra extends Chakra {
 }
 
 class Root extends Chakra {
-  Root({required super.position, required super.sound});
+  Root({required super.position, required super.sound}) : super(frequency: 396);
   @override
   String get id => "root";
 }
 
 class Sacral extends Chakra {
-  Sacral({required super.position, required super.sound});
+  Sacral({required super.position, required super.sound})
+      : super(frequency: 417);
   @override
   String get id => "sacral";
 }
 
 class SolarPlexus extends Chakra {
-  SolarPlexus({required super.position, required super.sound});
+  SolarPlexus({required super.position, required super.sound})
+      : super(frequency: 528);
   @override
   String get id => "solar-plexus";
 }
 
 class Heart extends Chakra {
-  Heart({required super.position, required super.sound});
+  Heart({required super.position, required super.sound})
+      : super(frequency: 639);
   @override
   String get id => "heart";
 }
 
 class Throat extends Chakra {
-  Throat({required super.position, required super.sound});
+  Throat({required super.position, required super.sound})
+      : super(frequency: 741);
   @override
   String get id => "throat";
 }
 
 class ThirdEye extends Chakra {
-  ThirdEye({required super.position, required super.sound});
+  ThirdEye({required super.position, required super.sound})
+      : super(frequency: 852);
   @override
   String get id => "third-eye";
 }
 
 class Crown extends Chakra {
-  Crown({required super.position, required super.sound});
+  Crown({required super.position, required super.sound})
+      : super(frequency: 963);
   @override
   String get id => "crown";
 }

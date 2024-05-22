@@ -20,9 +20,10 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:open_chakra_toning/model/chakras.dart';
 import 'package:open_chakra_toning/ui/widgets/app_bar.dart';
+import 'package:open_chakra_toning/ui/widgets/button_with_text.dart';
+import 'package:open_chakra_toning/ui/widgets/text_section.dart';
 
 class ChakraView extends StatelessWidget {
   final Chakra chakra;
@@ -30,11 +31,54 @@ class ChakraView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // inspiration taken from https://docs.flutter.dev/ui/layout/tutorial
     return Scaffold(
-        appBar: buildAppBar(context), body: Center(child: chakra.iconSVG()));
+        appBar: buildAppBar(context),
+        body: SingleChildScrollView(
+            child: Column(children: [
+          Padding(
+            padding: const EdgeInsets.all(32),
+            child: Row(
+              children: [
+                Expanded(
+                  /*1*/
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      /*2*/
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                        child: Text(
+                          chakra.name,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        "${chakra.frequency.toInt()}Hz",
+                        style: TextStyle(
+                          color: Colors.grey[500],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                /*3*/
+                ButtonWithText(
+                    color: Theme.of(context).primaryColor,
+                    icon: Icons.play_arrow,
+                    labelKey: "button.play"),
+              ],
+            ),
+          ),
+          TextSection(descriptionKey: "chakra.description.${chakra.id}")
+        ])));
   }
 
   AppBar buildAppBar(BuildContext context) {
-    return AppBarBuilder.buildAppBar(context, [], back: true);
+    var appBar = AppBarBuilder.buildAppBar(context, [],
+        back: true, title: Text(chakra.name));
+    return appBar;
   }
 }
