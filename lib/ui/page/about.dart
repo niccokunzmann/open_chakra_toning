@@ -22,6 +22,7 @@
 
 import "package:flutter/material.dart";
 import "package:flutter_svg/flutter_svg.dart";
+import "package:open_chakra_toning/ui/widgets/app_menu_item.dart";
 import 'package:package_info_plus/package_info_plus.dart';
 import "package:flutter_translate/flutter_translate.dart";
 import "package:open_chakra_toning/config.dart";
@@ -102,7 +103,8 @@ class AboutTheApp extends StatelessWidget {
   }
 
   static AppMenuItem getMenuItem() {
-    return AppMenuItem("menu.about", (BuildContext context) {
+    return AppMenuItem(Icons.question_mark, "menu.about",
+        (BuildContext context) {
       // push the new page
       // see https://blog.logrocket.com/flutter-appbar-tutorial/
       Navigator.push(context, MaterialPageRoute(builder: (context) {

@@ -17,18 +17,8 @@
 */
 import 'package:flutter/material.dart';
 import 'package:open_chakra_toning/config.dart';
+import 'package:open_chakra_toning/ui/widgets/app_menu_item.dart';
 import 'package:open_chakra_toning/ui/widgets/translated_text.dart';
-
-class AppMenuItem {
-  final String translationKey;
-  final void Function(BuildContext context) onClick;
-
-  AppMenuItem(this.translationKey, this.onClick);
-
-  Widget getMenuWidget() {
-    return TranslatedText(translationKey);
-  }
-}
 
 class AppBarBuilder {
   static double get toolbarHeight => kToolbarHeight;

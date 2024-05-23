@@ -26,6 +26,7 @@ import 'package:open_chakra_toning/ui/page/chakra.dart';
 import 'package:open_chakra_toning/ui/widgets/app_bar.dart';
 import 'package:open_chakra_toning/model/chakras.dart';
 import 'package:open_chakra_toning/main.dart';
+import 'package:open_chakra_toning/ui/widgets/app_menu_item.dart';
 
 class ChakraMapState extends State<MyHomePage> {
   ChakraPicture chakras = ChakraPictures().getChakraPicture();
