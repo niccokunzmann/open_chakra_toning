@@ -12,7 +12,7 @@
             "solar-plexus": "Nabelchakra",
             "heart": "Herzchakra",
             "throat": "Kehlchakra",
-            "third-eye": "Third Eye Chakra",
+            "third-eye": "Drittes Auge Chakra",
             "crown": "Kronenchakra",
             "no-chakra": "Kein Chakra"
         },
@@ -43,6 +43,6 @@
         "version": "Sieh den Quelltext dieser Version an"
     },
     "chakra-map": {
-        "action-button": "Explore the chakra"
+        "action-button": "Chakra Erkunden"
     }
 }
