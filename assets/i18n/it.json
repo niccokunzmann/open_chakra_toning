@@ -34,15 +34,15 @@
     "about": {
         "description": "Apri i tuoi chakra cantando alle loro frequenze e meditando",
         "view-project": "Visualizza la pagina del progetto",
-        "report-issue": "Report an issue or request a feature",
+        "report-issue": "Segnala un problema o richiedi una funzionalità",
         "view-website": "Visualizza il sito web",
-        "license": "View the license of the source code",
-        "license-content": "View the license of the content",
+        "license": "Visualizza la licenza del codice sorgente",
+        "license-content": "Visualizza la licenza del contenuto",
         "view-privacy-policy": "Privacy Policy",
-        "translate": "Translate the app",
-        "version": "View the source code of this version"
+        "translate": "Traduci l'app",
+        "version": "Visualizza il codice sorgente di questa versione"
     },
     "chakra-map": {
-        "action-button": "Explore the chakra"
+        "action-button": "Esplora il chakra"
     }
 }
