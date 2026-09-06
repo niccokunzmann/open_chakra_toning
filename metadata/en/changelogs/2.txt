@@ -1,7 +1,0 @@
-- Release msix file
-- Use mp3 as sound files
-- Add Privacy Policy
-- Restucture the images into more files
-- Add glow behind person
-- Add glow behind playing chakra
-- Chakra icons are not transparent any more
