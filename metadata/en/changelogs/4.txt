@@ -1,6 +1,0 @@
-- Resize flatpak launcher icons
-- Change flathub background
-- Clarify license of content
-- Link to Privacy Policy
-- Link to translation page
-- Link to app version tag
