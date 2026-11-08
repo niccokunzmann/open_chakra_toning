@@ -1,3 +1,0 @@
-- Add about page
-- Add license page
-- Add Italian translation by albanobattistella
